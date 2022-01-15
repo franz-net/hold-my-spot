@@ -14,7 +14,7 @@
                 <h1>Hold My Spot!</h1>
                 <p id="landing-subtitle">Reservation management made simple</p>
             </div>
-            <button id="landing-btn-login">Login / Signup</button>
+            <button id="landing-btn-login">Provider Login</button>
         </header>
         <section>
             <div class="landing-section">
@@ -37,12 +37,47 @@
             </ul>
         </section>
         <footer id="landing-footer">
-            <p>&copy; Hold My Spot 2022</p>
+            <p>&copy; Hold My Spot 2022 - All rights reserved</p>
         </footer>
     </div>
     <div id="landing-modal" class="modal-outer" style="display: none;">
+        <div class="modal-frame">
+            
+            <div class="tab">
+                <button id="login-tab" class="login-tablink default">Login</button>
+                <button id="signup-tab" class="login-tablink">Sign Up</button>
+            </div>
 
+            <div id="login-details" class="login-tabcontent tabcontent-hide">
+                <h1>Login</h1>
+                <p>Welcome back!</p>
+                <form class="form" method="post" action="/login">
+                    <div class="form-row">
+                        <label for="email">E-Mail:</label>
+                        <input id="email" name="email" type="email" placeholder="name@mycompany.com" autocomplete="username" required/>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="password">Password:</label>
+                        <input id="password" name="password" type="password" placeholder="******" autocomplete="current-password" required/>
+                    </div>
+
+                    <div class="form-row">
+                        <button type="submit">Log In</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="signup-details" class="login-tabcontent tabcontent-hide">
+                <h1>Sign Up</h1>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <p>&copy; Hold My Spot 2022 - All rights reserved</p>
+        </div>
     </div>
-    <script src="../static/landing.js"></script>
+    <script src="../static/landing.js">
+    </script>
 </body>
 </html>
