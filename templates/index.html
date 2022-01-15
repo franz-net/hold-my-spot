@@ -8,27 +8,41 @@
     <link rel="stylesheet" href="static/landing.css"/>
 </head>
 <body>
-    <header id="landing-header">
-        <div id="landing-title">
-            <h1>Hold My Spot!</h1>
-            <p>Reservation management made simple</p>
-        </div>
-        <button>Log in / Sign up</button>
-    </header>
-    <section>
-        <p>Create your recurring event or class and we'll handle the attendees on your behalf</p>
-    </section>
-    <section>
-        <h4>Features</h4>
-        <ul>
-            <li>Create a custom page for your business</li>
-            <li>Manage recurrent events and create schedules attendees can reserve a spot on</li>
-            <li>Attendees can sign up to one or more events based on event capacity and rules</li>
-            <li>Control access and roll call by checking on QR or reservation ID</li>
-        </ul>
-    </section>
-    <footer id="landing-footer">
-        <p>&copy; Hold My Spot 2022</p>
-    </footer>
+    <div id="main-container">
+        <header id="landing-header">
+            <div id="landing-title">
+                <h1>Hold My Spot!</h1>
+                <p id="landing-subtitle">Reservation management made simple</p>
+            </div>
+            <button id="landing-btn-login">Login / Signup</button>
+        </header>
+        <section>
+            <div class="landing-section">
+                <img src="../static/assets/queue.svg" alt="queue"/>
+                <p>Create your recurring event or class and we'll handle the attendees on your behalf</p>
+            </div>
+        
+            <div class="landing-section">
+                <p>Avoid unnecessary queue lines by letting your attendees know exactly when to show up</p>
+                <img src="../static/assets/queue.svg" alt="queue"/>
+            </div>
+        </section>
+        <section>
+            <h4>Features</h4>
+            <ul>
+                <li>Create a custom page for your business</li>
+                <li>Manage recurrent events and create schedules attendees can reserve a spot on</li>
+                <li>Attendees can sign up to one or more events based on event capacity and rules</li>
+                <li>Control access and roll call by checking on QR or reservation ID</li>
+            </ul>
+        </section>
+        <footer id="landing-footer">
+            <p>&copy; Hold My Spot 2022</p>
+        </footer>
+    </div>
+    <div id="landing-modal" class="modal-outer" style="display: none;">
+
+    </div>
+    <script src="../static/landing.js"></script>
 </body>
 </html>

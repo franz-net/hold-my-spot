@@ -1,17 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap');
 
+* {
+    box-sizing: border-box;
+    /* flex-wrap: wrap; */
+}
+
 body{
     margin: 0;
     padding: 0;
     /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
     background: linear-gradient(120deg, #c33764, #1d2671);
-    background-size: 500%;
+    background-size: 500% 500%;
+    background-repeat: no-repeat;
     animation: bg-animation 25s infinite;
-    height: 100vh;
+    min-height: 100vh;
     color: #FFF;
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items:center;
 }
 
 @keyframes bg-animation {
@@ -26,12 +34,64 @@ body{
 	}
 }
 
-#landing-header {
-    display:flex;
-    justify-content: space-between;
+#main-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1024px;
+    gap: 0.5em;
 }
 
 body > footer {
     position: sticky;
     top: 100vh;
 }
+
+/* ------ Landing Page Styling --------*/
+
+#landing-header {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+#landing-title h1 {
+    font-size: 4em;
+    margin-bottom: 0;
+}
+
+#landing-subtitle {
+    margin-top: 0;
+}
+
+.landing-section {
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.landing-section img {
+    max-width: 300px;
+}
+
+/* --------------*/
+
+/* ------ Modal Styling --------*/
+
+.modal-outer {
+    position: fixed;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(120deg, #c33764, #1d2671);
+}
+
+/* --------------*/
+
+/* ------ Login / Signup Page Styling --------*/
+
+/* --------------*/
