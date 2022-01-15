@@ -1,6 +1,7 @@
 // Variables and Constants
 const $landingSigningButton = document.querySelector('#landing-btn-login')
 const $landingModal = document.querySelector('#landing-modal')
+const $landingCancelBtns = document.querySelectorAll('.login-modal-cancel')
 const $loginSignupTabs = document.querySelectorAll('.login-tablink')
 const $loginSignupContent = document.querySelectorAll('.login-tabcontent')
 const $defaultLoginTab = document.querySelector('.default')
@@ -31,11 +32,11 @@ $landingSigningButton.addEventListener('click', () => {
     $landingModal.style.removeProperty('display')
 })
 
-$landingModal.addEventListener('click', (event) => {
-    if (event.target.classList.contains("modal-outer")){
+for (let btn of $landingCancelBtns) {
+    btn.addEventListener('click', (event) => {
         $landingModal.style.display='none'
-    }
-})
+    })
+}
 
 for (let tab of $loginSignupTabs) {
     tab.addEventListener('click', (event) => {
