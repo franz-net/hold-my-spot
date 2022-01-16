@@ -28,16 +28,6 @@ function loginTabs(evt, action) {
 
 
 // Dom interactions
-$landingSigningButton.addEventListener('click', () => {
-    $landingModal.style.removeProperty('display')
-})
-
-for (let btn of $landingCancelBtns) {
-    btn.addEventListener('click', (event) => {
-        $landingModal.style.display='none'
-    })
-}
-
 for (let tab of $loginSignupTabs) {
     tab.addEventListener('click', (event) => {
         if (event.target.innerText === "Login") {
@@ -49,3 +39,6 @@ for (let tab of $loginSignupTabs) {
 }
 
 $defaultLoginTab.click()
+
+
+// Web Requests

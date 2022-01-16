@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div id="landing-modal" class="modal-outer">
+    <div class="modal-frame">
+        
+        <div class="tab">
+            <button id="login-tab" class="login-tablink default">Login</button>
+            <button id="signup-tab" class="login-tablink">Sign Up</button>
+        </div>
+
+        <div id="login-details" class="login-tabcontent tabcontent-hide">
+            <h1>Login</h1>
+            <p>Welcome back!, please sign in to continue</p>
+            <form class="form" method="post" action="/auth">
+                <div class="form-row">
+                    <label for="email">E-Mail:</label>
+                    <input id="email" name="email" type="email" placeholder="name@mycompany.com" autocomplete="username" required/>
+                </div>
+
+                <div class="form-row">
+                    <label for="password">Password:</label>
+                    <input id="password" name="password" type="password" placeholder="******" autocomplete="current-password" required/>
+                </div>
+
+                <div class="form-row">
+                    <button type="submit">Log In</button>
+                    <a href="/"><button class="login-modal-cancel" type="button">Cancel</button></a>
+                </div>
+            </form>
+        </div>
+
+        <div id="signup-details" class="login-tabcontent tabcontent-hide">
+            <h1>Sign Up</h1>
+            <p>Please fill in the information below to create an account</p>
+            <div id="msg"></div>
+            <form class="form" method="post" action="/signup">
+                <div class="form-row">
+                    <label for="first-name">First Name:</label>
+                    <input id="first-name" name="first-name" type="text" placeholder="John" autocomplete="given-name" required/>
+                </div>
+
+                <div class="form-row">
+                    <label for="last-name">Last Name:</label>
+                    <input id="last-name" name="last-name" type="text" placeholder="Doe" autocomplete="last-name" required/>
+                </div>
+
+                <div class="form-row">
+                    <label for="phone">Phone:</label>
+                    <input id="phone" name="phone" type="tel" placeholder="(xxx)-xxx-xxx" autocomplete="mobile" required/>
+                </div>
+
+                <div class="form-row">
+                    <label for="email">E-Mail:</label>
+                    <input id="email" name="email" type="email" placeholder="name@mycompany.com" autocomplete="username" required/>
+                </div>
+
+                <div class="form-row">
+                    <label for="password">Password:</label>
+                    <input id="password" name="password" type="password" placeholder="******" autocomplete="new-password" required/>
+                </div>
+
+                <div class="form-row">
+                    <button type="submit">Sign Up</button>
+                    <a href="/"><button class="login-modal-cancel" type="button">Cancel</button></a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <p>&copy; Hold My Spot 2022 - All rights reserved</p>
+    </div>
+</div>
+
+{% endblock %}
