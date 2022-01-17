@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h1> Welcome to the dashboard </h1>
-
+    {% for i in admin_events %}
+        {{ i }}
+    {% endfor %}
 {% endblock %}

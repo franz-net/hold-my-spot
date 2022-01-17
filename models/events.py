@@ -68,13 +68,20 @@ def check_event_capacity(eventid):
 
     return capacity - total_attendance
 
-# Return list of events by attendee
-def get_event_by_name(event_name):
-    query = "select * from events where title = %s"
-    event = sql_select(query, [event_name])
-    if len(event) > 0:
-        return event
-    else:
-        return None
+#Return list of events by attendee
+def get_events_by_attendee(userid):
+    query = "select e.id, e.title, e.description, e.event_date, e.event_time, e.address, e.capacity from event_attendees ea join events e on ea.event_id = e.id where ea.user_id = %s;"
+    events = sql_select(query, [userid])
+    return events
 
-# Return list of events by admin
+#Return list of events by admin
+def get_events_by_admin(userid):
+    query = "select e.id, e.title, e.description, e.event_date, e.event_time, e.address, e.capacity from event_admins ea join events e on ea.event_id = e.id where ea.user_id = %s;"
+    events = sql_select(query, [userid])
+    return events
+
+#Return list of attendees by eventid
+def get_attendees_by_event(eventid):
+    query = "select u.id, u.name, u.last_name, u.phone, u.email from event_attendees ea join users u on ea.user_id = u.id where ea.event_id = %s"
+    attendee_list = sql_select(query, [eventid])
+    return attendee_list
