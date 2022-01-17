@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 from controllers.user_controller import user_controller
 from controllers.session_controller import session_controller
 from controllers.events_controller import events_controller
@@ -9,6 +9,9 @@ SEC_KEY = os.environ.get("SECRET_KEY", "MY_SECRET")
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SEC_KEY
+app.config['SESSION_COOKIE_SECURE'] = True
+app.config['PERMANENT_SESSION_LIFETIME'] = 3600
+app.config['SESSION_PERMANENT'] = True
 app.register_blueprint(user_controller)
 app.register_blueprint(session_controller)
 app.register_blueprint(events_controller)

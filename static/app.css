@@ -2,7 +2,6 @@
 
 * {
     box-sizing: border-box;
-    /* flex-wrap: wrap; */
 }
 
 body{
@@ -34,16 +33,6 @@ body{
 	}
 }
 
-#wave-overlay {
-    position: fixed;
-    right:0;
-    top:0;
-    width: 100%;
-    background: url(./assets/layered-waves-haikei.svg);
-    background-repeat: no-repeat;
-    background-position: right;
-    overflow: auto;
-}
 
 #main-container {
     display: flex;
@@ -63,6 +52,7 @@ footer, .modal-footer {
 
 button {
     font-family: inherit;
+    font-size: inherit;
 }
 
 /* ------ Landing Page Styling --------*/
@@ -214,6 +204,32 @@ button {
 
 /* --------------*/
 
+/* Global logged-in styles */
+
+#header-logged {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.user-display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 0.7em;
+    gap: 1em;
+}
+
+.link-bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap:0.5em;
+}
+
+
+/* --------------*/
+
 /* Dashboard styles */
 
 .dashboard-container {
@@ -224,6 +240,12 @@ button {
     padding: 1em;
     border-radius: 15px;
 }
+
+.logo-mini {
+    max-width: 30px;
+    max-height: 30px;
+}
+
 
 
 /* --------------*/

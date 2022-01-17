@@ -9,6 +9,7 @@ def login():
     if not session.get('user_id'):
         return render_template('login.html')
     else:
+        ## TODO - CHECK user_id exists in the DB (specially cross environments)
         return redirect('/dashboard')
 
 
@@ -21,6 +22,7 @@ def authenticate_user():
     if user and bcrypt.checkpw(password.encode(), user['password'].encode()):
         session['user_id'] = user['id']
         session['name'] = user['name']
+        session['email'] = user['email']
         return redirect('/dashboard')
     else:
         return redirect('/login')

@@ -9,19 +9,30 @@
 </head>
 <body>
     <div id="main-container" class="dashboard-container">
-        <header>
-            {% if session['user_id'] %}
-                <h1>Welcome {{ session['name'] }}</h1>
-            {% endif %}
+        <header id="header-logged">
+            <div class="user-display">
+                {% if session['user_id'] %}
+                    <p>Logged in as: <strong>{{ session['email'] }}</strong></p>
+                    <a href="/logout"><button>Logout</button></a>
+                {% endif %}
+            </div>
+            <div class="link-bar">
+                <img class="logo-mini" src="../static/assets/reserved-logo.svg">
+                <nav>
+                    <a href="/dashboard"><button>Dashboard</button></a>
+                    <a href="/events/create"><button>Create Event</button></a>
+                    <a href="/events/past"><button>View Past Events</button></a>
+                </nav>
+            </div>
         </header>
         {% block content %}
     
         {% endblock %}
 
-        <footer>
-
-        </footer>
     </div>
+    <footer>
+        <p>&copy; Hold My Spot 2022 - All rights reserved</p>
+    </footer>
     <script src="../static/app.js">
     </script>
 </body>
