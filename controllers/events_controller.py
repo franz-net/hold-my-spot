@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, session, request, render_template
 from models.events import add_event
 
-events_controller = Blueprint("user_controller", __name__)
+events_controller = Blueprint("events_controller", __name__)
 
 
 @events_controller.route('/dashboard')
