@@ -209,7 +209,7 @@ button {
 #header-logged {
     display: flex;
     flex-direction: column;
-
+    margin-bottom: 1em;
 }
 
 .user-display {
@@ -246,6 +246,9 @@ button {
     max-height: 30px;
 }
 
-
+.event-list {
+    border-radius: 15px;
+    border: 2px solid black;
+}
 
 /* --------------*/

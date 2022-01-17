@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<h1> Welcome to the dashboard </h1>
-    {% for i in admin_events %}
-        {{ i }}
-    {% endfor %}
+    <div class="sub-content">
+        <div class="event-list">
+            <h3> Events I manage </h3>
+                {% for i in admin_events %}
+                    {{ i }}
+                {% endfor %}
+        </div>
+
+        <div class="event-list">
+            <h3> Events I have reservations for </h3>
+                {% for i in attendee_events %}
+                    {{ i }}
+                {% endfor %}
+        </div>
+    
+    </div>
 {% endblock %}
