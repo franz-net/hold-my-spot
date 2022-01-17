@@ -15,10 +15,10 @@ def login():
 @session_controller.route('/auth', methods=["POST"])
 def authenticate_user():
     username = request.form.get('email')
-    password = request.form.get('password').encode()
+    password = request.form.get('password')
 
     user = get_user_by_email(username)
-    if user and bcrypt.checkpw(password, user['password'].encode()):
+    if user and bcrypt.checkpw(password.encode(), user['password'].encode()):
         session['user_id'] = user['id']
         session['name'] = user['name']
         return redirect('/dashboard')

@@ -12,13 +12,13 @@ def register_user():
     email = request.form.get('email')
     password = bcrypt.hashpw(request.form.get('password').encode(), bcrypt.gensalt())
 
-    add_user(email, name, lname, phone, password)
+    add_user(email, name, lname, phone, password.decode())
     return redirect('/')
 
 @user_controller.route('/validate_email', methods=["POST"])
 def check_email_in_use():
     email = request.form.get('email')
-    
+
     if get_user_by_email(email) is not None:
         response = jsonify('<span style=\'color:red;\'>Email already in use</span>')
         response.status_code = 200
