@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="static/app.css"/>
 </head>
 <body>
-    <div id="main-container">
+    <div id="main-container" class="dashboard-container">
         <header>
-
+            {% if session['user_id'] %}
+                <h1>Welcome {{ session['name'] }}</h1>
+            {% endif %}
         </header>
         {% block content %}
     

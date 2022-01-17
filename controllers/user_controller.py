@@ -11,7 +11,7 @@ def register_user():
     phone = request.form.get('phone')
     email = request.form.get('email')
     password = bcrypt.hashpw(request.form.get('password').encode(), bcrypt.gensalt()).decode()
-
+    
     add_user(email, name, lname, phone, password)
     return redirect('/')
 

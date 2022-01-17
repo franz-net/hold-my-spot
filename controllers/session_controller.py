@@ -24,3 +24,8 @@ def authenticate_user():
         return redirect('/dashboard')
     else:
         return redirect('/login')
+
+@session_controller.route('/logout')
+def deauthenticate_user():
+    session.clear()
+    return redirect('/')

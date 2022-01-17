@@ -27,6 +27,9 @@ CRUD Reservation system
 - event_attendee table: Stores the attendees of the events
 - leads table: Stores walkin users email address for creating future accounts(stretch)
 
+#### Entity Relationship Diagram:
+![Entity_relationship](er-diagram.png)
+
 ---
 ### User stories
 

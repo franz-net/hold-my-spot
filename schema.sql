@@ -1,24 +1,32 @@
-create table users (
-	id serial primary key,
-	name VARCHAR(50) not null,
-	last_name VARCHAR(50) not null,
-	phone VARCHAR(15) not null,
-	email text not null unique,
-	password text not null
+CREATE TABLE IF NOT EXISTS users (
+	id serial PRIMARY KEY,
+	name varchar(50) NOT NULL,
+	last_name varchar(50) NOT NULL,
+	phone varchar(15) NOT NULL,
+	email text NOT NULL unique,
+	password text NOT NULL
 );
 
-create table events(
-    id serial primary key,
-    title TEXT not null,
+CREATE TABLE IF NOT EXISTS events(
+    id serial PRIMARY KEY,
+    title text NOT NULL,
     description TEXT,
-    event_date date not null,
-    event_time time not null
-)
+    event_date date NOT NULL,
+    event_time time NOT NULL,
+    address text,
+    capacity int NOT NULL
+);
 
-create table event_admins(
-    user_id int not null,
-    event_id int not null,
-    primary key(user_id, event_id),
-    constraint fk_user FOREIGN KEY(user_id) REFERENCES users(id),
-    constraint fk_event FOREIGN KEY(event_id) REFERENCES events(id) on delete cascade
-)
+CREATE TABLE IF NOT EXISTS event_admins(
+    user_id int REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    event_id int REFERENCES events(id) ON UPDATE CASCADE,
+    CONSTRAINT event_admins_pkey PRIMARY KEY(user_id, event_id)
+);
+
+
+CREATE TABLE IF NOT EXISTS event_attendees(
+    user_id int REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    event_id int REFERENCES events(id) ON UPDATE CASCADE,
+    attendance int DEFAULT 0,
+    CONSTRAINT event_attendees_pkey PRIMARY KEY(user_id, event_id)
+);

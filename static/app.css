@@ -34,6 +34,17 @@ body{
 	}
 }
 
+#wave-overlay {
+    position: fixed;
+    right:0;
+    top:0;
+    width: 100%;
+    background: url(./assets/layered-waves-haikei.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+    overflow: auto;
+}
+
 #main-container {
     display: flex;
     flex-direction: column;
@@ -78,6 +89,7 @@ button {
     flex-wrap: wrap;
     align-items: center;
     gap: 0.5em;
+    background: rgba(0,0,0,0.6)
 }
 
 .landing-section img {
@@ -199,5 +211,19 @@ button {
 .form-row button {
     margin-top: .5em;
 }
+
+/* --------------*/
+
+/* Dashboard styles */
+
+.dashboard-container {
+    background-color: rgba(255,255,255,0.75);
+    color: black;
+    width: 90%;
+    height: 90%;
+    padding: 1em;
+    border-radius: 15px;
+}
+
 
 /* --------------*/
