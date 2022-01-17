@@ -10,9 +10,9 @@ def register_user():
     lname = request.form.get('last-name')
     phone = request.form.get('phone')
     email = request.form.get('email')
-    password = bcrypt.hashpw(request.form.get('password').encode(), bcrypt.gensalt())
+    password = bcrypt.hashpw(request.form.get('password').encode(), bcrypt.gensalt()).decode()
 
-    add_user(email, name, lname, phone, password.decode())
+    add_user(email, name, lname, phone, password)
     return redirect('/')
 
 @user_controller.route('/validate_email', methods=["POST"])
