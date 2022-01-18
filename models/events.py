@@ -1,5 +1,8 @@
 from database import sql_select, sql_write
 
+DATE_FORMAT = "%m/%d/%Y"
+TIME_FORMAT = "%H:%M:%S"
+
 #Create event
 def add_event(title, description, event_date, event_time, address, capacity):
     query = "insert into events (title, description, event_date, event_time, address, capacity) values (%s,%s,%s,%s,%s)"
@@ -12,6 +15,8 @@ def get_event_by_id(eventid):
     query = "select * from events where id = %s"
     event = sql_select(query, [eventid])
     if len(event) > 0:
+        event[0]['event_date'] = event[0]['event_date'].strftime(DATE_FORMAT)
+        event[0]['event_time'] = event[0]['event_time'].strftime(TIME_FORMAT)
         return event[0]
     else:
         return None
@@ -72,12 +77,18 @@ def check_event_capacity(eventid):
 def get_events_by_attendee(userid):
     query = "select e.id, e.title, e.description, e.event_date, e.event_time, e.address, e.capacity from event_attendees ea join events e on ea.event_id = e.id where ea.user_id = %s;"
     events = sql_select(query, [userid])
+    for row in events:
+        row['event_date'] = row['event_date'].strftime(DATE_FORMAT)
+        row['event_time'] = row['event_time'].strftime(TIME_FORMAT)
     return events
 
 #Return list of events by admin
 def get_events_by_admin(userid):
     query = "select e.id, e.title, e.description, e.event_date, e.event_time, e.address, e.capacity from event_admins ea join events e on ea.event_id = e.id where ea.user_id = %s;"
     events = sql_select(query, [userid])
+    for row in events:
+        row['event_date'] = row['event_date'].strftime(DATE_FORMAT)
+        row['event_time'] = row['event_time'].strftime(TIME_FORMAT)
     return events
 
 #Return list of attendees by eventid

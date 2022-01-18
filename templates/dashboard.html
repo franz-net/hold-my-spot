@@ -1,19 +1,115 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="sub-content">
-        <div class="event-list">
-            <h3> Events I manage </h3>
-                {% for i in admin_events %}
-                    {{ i }}
-                {% endfor %}
-        </div>
-
-        <div class="event-list">
-            <h3> Events I have reservations for </h3>
-                {% for i in attendee_events %}
-                    {{ i }}
-                {% endfor %}
-        </div>
     
+    <div class="events-container">
+        <h2> My Events </h2>
+        <hr/>
+        <div class="event-list">
+            {% if admin_events | length > 0 %}
+
+                {% for i in admin_events|sort(attribute='event_date') %}
+                    <div class="event-item">
+
+                        <div class="title-row">
+                            <a class="item-title" href="/event/admin/{{ i['id'] }}"><strong>{{ i['title'] }}</strong></a>
+                            <p>
+                                <span class="item-description">{{ i['description'] }}</span>
+                            </p>
+                        </div>
+
+                        <div class="details-row">
+
+                            <div class="item-column">
+                                <p>
+                                    <span class='item-label'>Date: </span>
+                                    <span class="item-value">{{ i['event_date'] }}</span>
+                                </p>
+                                <p>
+                                    <span class='item-label'>Time: </span>
+                                    <span class="item-value">{{ i['event_time'] }}</span>
+                                </p>
+                            </div>
+
+                            <div class="item-column">    
+                                <p>
+                                    <span class='item-label'>Capacity: </span>
+                                    <span class="item-value">{{ i['capacity'] }}</span>
+                                </p>
+                                <p>
+                                    <span class='item-label'>Address: </span>
+                                    <span class="item-value">{{ i['address'] }}</span>
+                                </p>
+                            </div>
+
+                            <div class="item-column">
+                                <p>
+                                    <a href="/event/admin/{{ i['id'] }}"><button>Manage Event</button></a>
+                                </p>
+                                <p>
+                                    <a href="/event/delete/{{ i['id'] }}"><button>Delete Event</button></a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+            {% else %}
+                    <h4>No Events here... Try creating an event!</h4>
+            {% endif %}
+        </div>
     </div>
+
+    <div class="events-container">
+        <h2> My Reservations </h2>
+        <hr/>
+        <div class="event-list">
+            {% if atendee_events | length > 0 %}
+                {% for i in attendee_events|sort(attribute='event_date') %}
+                    <div class="event-item">
+
+                        <div class="title-row">
+                            <a class="item-title" href="/reservation/{{ i['id'] }}"><strong>{{ i['title'] }}</strong></a>
+                            <p>
+                                <span class="item-description">{{ i['description'] }}</span>
+                            </p>
+                        </div>
+
+                        <div class="details-row">
+
+                            <div class="item-column">
+                                <p>
+                                    <span class='item-label'>Date: </span>
+                                    <span class="item-value">{{ i['event_date'] }}</span>
+                                </p>
+                                <p>
+                                    <span class='item-label'>Time: </span>
+                                    <span class="item-value">{{ i['event_time'] }}</span>
+                                </p>
+                            </div>
+
+                            <div class="item-column">
+                                <p>
+                                    <span class='item-label'>Address: </span>
+                                    <span class="item-value">{{ i['address'] }}</span>
+                                </p>
+                            </div>
+
+                            <div class="item-column">
+                                <p>
+                                    <a href="/reservation/{{ i['id'] }}"><button>View Reservation</button></a>
+                                </p>
+                                <p>
+                                    <a href="/reservation/delete/{{ i['id'] }}"><button>Cancel Reservation</button></a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h4>No Events here... Try creating an event!</h4>
+            {% endif %}
+        </div>
+    </div>
+
 {% endblock %}

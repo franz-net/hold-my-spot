@@ -242,13 +242,60 @@ button {
 }
 
 .logo-mini {
-    max-width: 30px;
-    max-height: 30px;
+    max-width: 100px;
+    max-height: 66px;
+}
+
+.events-container {
+    border-radius: 15px;
+    border: 2px solid black;
+    padding: 1em;
 }
 
 .event-list {
-    border-radius: 15px;
-    border: 2px solid black;
+    overflow: auto;
+    max-height: 50%;
 }
+
+.event-item {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px dashed rgb(72, 69, 69);;
+}
+
+.title-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2em;
+}
+
+.details-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.event-item p {
+    margin:5px;
+}
+
+.item-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item-title {
+    font-size: 1.3em;
+}
+
+.item-description {
+    font-size: 1em;
+}
+
+.item-label {
+    color: rgb(72, 69, 69);
+}
+
 
 /* --------------*/
