@@ -307,3 +307,28 @@ button {
 
 
 /* --------------*/
+
+/* View styles */
+
+.item-view{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-view h2 {
+    margin-bottom: 0;
+}
+
+.buttons-row{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1em;
+}
+
+.url-small {
+    font-size: 0.8em;
+}
+
+/* --------------*/

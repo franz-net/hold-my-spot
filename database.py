@@ -15,9 +15,13 @@ def sql_select(query, args=None):
 
 def sql_write(query, args=None):
     conn = psycopg2.connect(DB_URL)
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=DictCursor)
     cur.execute(query, args)
+    if cur.pgresult_ptr is not None:
+        res = cur.fetchone()
+    else: 
+        res = None
     conn.commit()
     cur.close()
     conn.close()
-    return
+    return res

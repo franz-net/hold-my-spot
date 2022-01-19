@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, session, request, render_template
-from models.events import add_event, get_events_by_admin, get_events_by_attendee, delete_event, get_event_by_id, update_event, get_attendees_by_event
+from models.events import add_event, add_event_admin, get_capacity_left, get_events_by_admin, get_events_by_attendee, delete_event, get_event_by_id, update_event, get_attendees_by_event
 
 events_controller = Blueprint("events_controller", __name__)
 
@@ -14,7 +14,7 @@ def show_dashboard():
         base_url = request.url_root + 'reserve/'
         return render_template('dashboard.html', admin_events = admin_events, attendee_events = attendee_events, base_url = base_url)
 
-@events_controller.route('/events/create') ## MISSING CORRESPONDING VIEW!! That sends request to /events/add
+@events_controller.route('/events/create')
 def show_create_events():
     if not session.get('user_id'):
         return redirect('/login')
@@ -22,7 +22,7 @@ def show_create_events():
         return render_template('create_event.html')
 
 @events_controller.route('/events/add', methods=["POST"])
-def add_event():
+def create_event():
     if not session.get('user_id'):
         return redirect('/login')
     else:
@@ -35,18 +35,23 @@ def add_event():
         phone = request.form.get('phone')
         email = request.form.get('email')
 
-        add_event(title, description, event_date, event_time, address, capacity, phone, email)
+        event_id = add_event(title, description, event_date, event_time, address, capacity, phone, email)
+
+        add_event_admin(event_id, session.get('user_id'))
 
         return redirect('/dashboard')
 
-@events_controller.route('/events/<eventid>') ## MISSING CORRESPONDING VIEW!!
+@events_controller.route('/events/<eventid>')
 def view_event(eventid):
     if not session.get('user_id'):
         return redirect('/login')
     else:
         event = get_event_by_id(eventid)
+        reservations = get_capacity_left(eventid)
+        event['capacity'] = f'{event["capacity"]}/{event["capacity"] - reservations}'
         attendee_list = get_attendees_by_event(eventid)
-        return render_template('event.html', event_data = event, attendee_data = attendee_list)
+        base_url = request.url_root + 'reserve/'
+        return render_template('event.html', event_data = event, attendee_data = attendee_list, base_url= base_url)
 
 @events_controller.route('/events/update') ## View coming from modal from ^
 def update_event_data():

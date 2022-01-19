@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+    
+    <div class="events-container">
+
+        <div class="item-view">
+
+                <h2>{{ event_data['title'] }}</h2>
+                
+                <span class="item-label url-small">{{ base_url ~ event_data['title'] ~ '/' ~ event_data['id'] }}</span>
+                
+                <p>
+                    <span class="item-value">{{ event_data['description'] }}</span>
+                </p>
+            <div class="data-row"> 
+                <p>
+                    <span class='item-label'>Date: </span>
+                    <span class="item-value">{{ event_data['event_date'] }}</span>
+                </p>
+                <p>
+                    <span class='item-label'>Time: </span>
+                    <span class="item-value">{{ event_data['event_time'] }}</span>
+                </p>
+                
+                <p>
+                    <span class='item-label'>Capacity: </span>
+                    <span class="item-value">{{ event_data['capacity'] }}</span>
+                </p>
+                <p>
+                    <span class='item-label'>Address: </span>
+                    <span class="item-value">{{ event_data['address'] }}</span>
+                </p>
+            </div>
+            <div class="buttons-row">
+                <button>Edit</button>
+                <form method="post" action="/events/delete">
+                    <input id="event_id" name="event_id" type="text" value="{{ event_data['id'] }}" style="display:none;">
+                    <button id="delete">Delete</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="events-container">
+        {% if attendee_data | length > 0 %}
+            {% for attendee in attendee_data %}
+                {{ attendee }}
+            {% endfor %}
+        {% else %}
+            <h3>No one has reserved a spot yet!</h3>
+        {% endif %}
+
+        <button> Add User</button>
+    </div>
+
+{% endblock %}

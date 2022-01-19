@@ -5,10 +5,10 @@ TIME_FORMAT = "%H:%M:%S"
 
 #Create event
 def add_event(title, description, event_date, event_time, address, capacity, phone, email):
-    query = "insert into events (title, description, event_date, event_time, address, capacity, phone, email) values (%s,%s,%s,%s, %s, %s, %s, %s)"
+    query = "insert into events (title, description, event_date, event_time, address, capacity, phone, email) values (%s,%s,%s,%s, %s, %s, %s, %s) RETURNING id;"
     params = [title, description, event_date, event_time, address, capacity, phone, email]
-    sql_write(query, params)
-    return
+    inserted = sql_write(query, params)['id']
+    return inserted
 
 #Return single event
 def get_event_by_id(eventid):
@@ -64,14 +64,11 @@ def mark_attendance(eventid, userid, attendance):
     return
 
 #See how many seats are left
-def check_event_capacity(eventid):
-    query = "select capacity from events where id = %s"
-    capacity = sql_select(query, [eventid])[0]
 
-    query = "select count(*) from event_attendees where event_id = %s and attendance = 1"
-    total_attendance = sql_select(query, [eventid])[0]
-
-    return capacity - total_attendance
+def get_capacity_left(eventid):
+    query = "select count(*) AS reservations from event_attendees where event_id = %s"
+    reserved = sql_select(query,[eventid])[0]
+    return reserved['reservations']
 
 #Return list of events by attendee
 def get_events_by_attendee(userid):
@@ -101,3 +98,9 @@ def delete_event(eventid):
     query = "delete from events where id = %s"
     sql_write(query, [eventid])
     return
+
+def get_checked_in_attendees(eventid):
+    # TODO
+    query = "select capacity from events where id = %s"
+    capacity = sql_select(query, [eventid])[0]
+    return 
