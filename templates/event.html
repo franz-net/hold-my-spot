@@ -32,7 +32,7 @@
                 </p>
             </div>
             <div class="buttons-row">
-                <button>Edit</button>
+                <button id="edit-event">Edit</button>
                 <form method="post" action="/events/delete">
                     <input id="event_id" name="event_id" type="text" value="{{ event_data['id'] }}" style="display:none;">
                     <button id="delete">Delete</button>
@@ -52,6 +52,69 @@
         {% endif %}
 
         <button> Add User</button>
+    </div>
+
+
+    <div id="update-modal" class="modal-outer hidden">
+        <div class="modal-frame">
+
+            <div class="login-tabcontent tabcontent-show  single-form">
+                <h1>Edit Event</h1>
+                <form id="event-form" class="form" method="post" action="/events/update">
+                    <input id="id" name="id" type="number" value="{{ event_data['id'] }}" hidden/>
+
+                    <div class="form-row">
+                        <label for="title">Event Title:</label>
+                        <input id="title" name="title" type="text" placeholder="Amazing Event" value="{{ event_data['title'] }}" required/>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="description">Event Description:</label>
+                        <textarea id="description" name="description" type="text" wrap="soft" form="event-form" >{{ event_data['description'] }}
+                        </textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="event_date">Event Date:</label>
+                        <input id="event_date" type="date" name="event_date" value="{{ date_form }}" required/>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="event_time">Event Time:</label>
+                        <input id="event_time" type="time" name="event_time" value="{{ event_data['event_time'] }}" required/>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="address">Event Address:</label>
+                        <input id="address" type="text" name="address" placeholder="123 Main St. New York, NY 79810" value="{{ event_data['address'] }}" required/>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="capacity">Event Capacity:</label>
+                        <input id="capacity" type="number" name="capacity" placeholder="10" value="{{ event_data['capacity'].split('/')[0] | int }}" required/>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="phone">Contact Phone:</label>
+                        <input id="phone" type="tel" name="phone" placeholder="+1 (917)-232-1234" value="{{ event_data['phone'] }}" required/>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="email">Contact Email:</label>
+                        <input id="email" type="email" name="email" placeholder="contact@event-organizer.com" value="{{ event_data['email'] }}" required/>
+                    </div>
+
+                    <div class="form-row">
+                        <button type="submit">Save Changes</button>
+                        <button id="cancel-update" type="button">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <p>&copy; Hold My Spot 2022 - All rights reserved</p>
+        </div>
     </div>
 
 {% endblock %}

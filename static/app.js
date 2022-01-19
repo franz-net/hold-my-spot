@@ -5,6 +5,9 @@ const $landingCancelBtns = document.querySelectorAll('.login-modal-cancel')
 const $loginSignupTabs = document.querySelectorAll('.login-tablink')
 const $loginSignupContent = document.querySelectorAll('.login-tabcontent')
 const $defaultLoginTab = document.querySelector('.default')
+const $updateBtn = document.querySelector('#edit-event')
+const $updateModal = document.querySelector('#update-modal')
+const $cancelUpdBtn = document.querySelector('#cancel-update')
 
 // Functions
 
@@ -38,7 +41,14 @@ for (let tab of $loginSignupTabs) {
     })
 }
 
+
+$updateBtn.addEventListener('click', () => {
+    $updateModal.classList.remove('hidden')
+})
+
+$cancelUpdBtn.addEventListener('click', () => {
+    $updateModal.classList.add('hidden')
+})
+
 $defaultLoginTab.click()
-
-
 // Web Requests

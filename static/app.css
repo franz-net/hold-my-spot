@@ -105,6 +105,10 @@ button {
     align-items: center;
 }
 
+.hidden {
+    display: none;
+}
+
 .modal-frame {
     background-color: white;
     display: flex;
