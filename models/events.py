@@ -72,11 +72,13 @@ def get_capacity_left(eventid):
 
 #Return list of events by attendee
 def get_events_by_attendee(userid):
-    query = "select e.id, e.title, e.description, e.event_date, e.event_time, e.address, e.capacity from event_attendees ea join events e on ea.event_id = e.id where ea.user_id = %s;"
+    query = "select e.id, e.title, e.description, e.event_date, e.event_time, e.address, ea.reservation_id from event_attendees ea join events e on ea.event_id = e.id where ea.user_id = %s;"
     events = sql_select(query, [userid])
     for row in events:
         row['event_date'] = row['event_date'].strftime(DATE_FORMAT)
         row['event_time'] = row['event_time'].strftime(TIME_FORMAT)
+    
+    print(events)
     return events
 
 #Return list of events by admin

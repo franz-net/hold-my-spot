@@ -54,7 +54,7 @@ def view_event(eventid):
         date_form = datetime.strptime(event['event_date'], '%m/%d/%Y')
         date_form = date_form.strftime('%Y-%m-%d')
         reservations = get_capacity_left(eventid)
-        event['capacity'] = f'{event["capacity"]}/{event["capacity"] - reservations}'
+        event['capacity'] = f'{event["capacity"] - reservations}/{event["capacity"]}'
         attendee_list = get_attendees_by_event(eventid)
         base_url = request.url_root + 'reserve/'
         return render_template('event.html', event_data = event, attendee_data = attendee_list, date_form = date_form, base_url= base_url)
