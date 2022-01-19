@@ -4,9 +4,9 @@ DATE_FORMAT = "%m/%d/%Y"
 TIME_FORMAT = "%H:%M:%S"
 
 #Create event
-def add_event(title, description, event_date, event_time, address, capacity):
-    query = "insert into events (title, description, event_date, event_time, address, capacity) values (%s,%s,%s,%s,%s)"
-    params = [title, description, event_date, event_time, capacity]
+def add_event(title, description, event_date, event_time, address, capacity, phone, email):
+    query = "insert into events (title, description, event_date, event_time, address, capacity, phone, email) values (%s,%s,%s,%s, %s, %s, %s, %s)"
+    params = [title, description, event_date, event_time, address, capacity, phone, email]
     sql_write(query, params)
     return
 
@@ -36,9 +36,9 @@ def remove_event_admin(eventid, userid):
     return
 
 #Update single event
-def update_event(eventid, title, description, event_date, event_time, address, capacity):
-    query = "update events set title = %s, description = %s, event_date = %s, event_time = %s, address = %s, capacity = %s where id = %s"
-    params = [title, description, event_date, event_time, address, capacity, eventid]
+def update_event(eventid, title, description, event_date, event_time, address, capacity, phone, email):
+    query = "update events set title = %s, description = %s, event_date = %s, event_time = %s, address = %s, capacity = %s, phone = %s, email = %s where id = %s"
+    params = [title, description, event_date, event_time, address, capacity, phone, email, eventid]
     sql_write(query, params)
     return
 
@@ -96,3 +96,8 @@ def get_attendees_by_event(eventid):
     query = "select u.id, u.name, u.last_name, u.phone, u.email from event_attendees ea join users u on ea.user_id = u.id where ea.event_id = %s"
     attendee_list = sql_select(query, [eventid])
     return attendee_list
+
+def delete_event(eventid):
+    query = "delete from events where id = %s"
+    sql_write(query, [eventid])
+    return

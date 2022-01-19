@@ -48,6 +48,7 @@ body > footer {
 
 footer, .modal-footer {
     font-size: 0.7rem;
+    color: white;
 }
 
 button {
@@ -111,7 +112,7 @@ button {
     flex-wrap: wrap;
     border-radius: 20px;
     color: black;
-    min-width: 200px;
+    min-width: 30%;
     max-width: 80%;
     min-height: 300px;
     padding: 0.5em;
@@ -120,7 +121,7 @@ button {
 
 /* --------------*/
 
-/* ------ Login / Signup Modal Styling --------*/
+/* ------ Login / Signup | Modal Styling --------*/
 
 .tab {
     display: flex;
@@ -163,7 +164,7 @@ button {
 .tabcontent-show {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -175,6 +176,11 @@ button {
     from {opacity:0;}
     to {opacity:1;}
 } 
+
+.single-form {
+    border-radius:15px;
+    border: 1px solid #ccc;
+}
 
 /* --------------*/
 
@@ -276,13 +282,15 @@ button {
 }
 
 .event-item p {
-    margin:5px;
+    margin: 0;
 }
 
 .item-column {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 0.2em;
+    margin: 2px 0;
 }
 
 .item-title {

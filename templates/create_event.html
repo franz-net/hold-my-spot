@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div id="landing-modal" class="modal-outer">
+    <div class="modal-frame">
+
+        <div class="login-tabcontent tabcontent-show  single-form">
+            <h1>New Event</h1>
+            <form id="event-form" class="form" method="post" action="/events/add">
+                <div class="form-row">
+                    <label for="title">Event Title:</label>
+                    <input id="title" name="title" type="text" placeholder="Amazing Event" required/>
+                </div>
+
+                <div class="form-row">
+                    <label for="description">Event Description:</label>
+                    <textarea id="description" name="description" type="text" wrap="soft" form="event-form" >
+                    </textarea>
+                </div>
+
+                <div class="form-row">
+                    <label for="event_date">Event Date:</label>
+                    <input id="event_date" type="date" name="event_date" required/>
+                </div>
+
+                <div class="form-row">
+                    <label for="event_time">Event Time:</label>
+                    <input id="event_time" type="time" name="event_time" required/>
+                </div>
+
+                <div class="form-row">
+                    <label for="address">Event Address:</label>
+                    <input id="event_address" type="text" name="event_address" placeholder="123 Main St. New York, NY 79810" required/>
+                </div>
+
+                <div class="form-row">
+                    <label for="capacity">Event Capacity:</label>
+                    <input id="capacity" type="number" name="capacity" placeholder="10" required/>
+                </div>
+
+                <div class="form-row">
+                    <label for="phone">Contact Phone:</label>
+                    <input id="phone" type="tel" name="phone" placeholder="+1 (917)-232-1234" required/>
+                </div>
+
+                <div class="form-row">
+                    <label for="email">Contact Email:</label>
+                    <input id="email" type="email" name="email" placeholder="contact@event-organizer.com" required/>
+                </div>
+
+                <div class="form-row">
+                    <button type="submit">Create</button>
+                    <a href="/dashboard"><button class="login-modal-cancel" type="button">Cancel</button></a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <p>&copy; Hold My Spot 2022 - All rights reserved</p>
+    </div>
+</div>
+
+{% endblock %}

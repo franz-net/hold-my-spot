@@ -11,9 +11,14 @@
                     <div class="event-item">
 
                         <div class="title-row">
-                            <a class="item-title" href="/event/admin/{{ i['id'] }}"><strong>{{ i['title'] }}</strong></a>
+                            <a class="item-title" href="/events/{{ i['id'] }}"><strong>{{ i['title'] }}</strong></a>
                             <p>
                                 <span class="item-description">{{ i['description'] }}</span>
+                            </p>
+
+                            <p>
+                                <span class='item-label'>Reservation URL:</span>
+                                <span class="item-url">{{ base_url ~ i['title'] ~ '/' ~ i['id'] }}</span>
                             </p>
                         </div>
 
@@ -42,12 +47,13 @@
                             </div>
 
                             <div class="item-column">
-                                <p>
-                                    <a href="/event/admin/{{ i['id'] }}"><button>Manage Event</button></a>
-                                </p>
-                                <p>
-                                    <a href="/event/delete/{{ i['id'] }}"><button>Delete Event</button></a>
-                                </p>
+                                
+                                <a href="/events/{{ i['id'] }}"><button>Manage Event</button></a>
+                                
+                                <form method="post" action="/events/delete">
+                                    <input id="event_id" name="event_id" type="text" value="{{ i['id'] }}" style="display:none;">
+                                    <button id="delete">Delete</button>
+                                </form>
                             </div>
                         </div>
 
@@ -68,7 +74,7 @@
                     <div class="event-item">
 
                         <div class="title-row">
-                            <a class="item-title" href="/reservation/{{ i['id'] }}"><strong>{{ i['title'] }}</strong></a>
+                            <a class="item-title" href="/reservations/{{ i['id'] }}"><strong>{{ i['title'] }}</strong></a>
                             <p>
                                 <span class="item-description">{{ i['description'] }}</span>
                             </p>
@@ -95,12 +101,16 @@
                             </div>
 
                             <div class="item-column">
-                                <p>
-                                    <a href="/reservation/{{ i['id'] }}"><button>View Reservation</button></a>
-                                </p>
-                                <p>
-                                    <a href="/reservation/delete/{{ i['id'] }}"><button>Cancel Reservation</button></a>
-                                </p>
+                                
+                                <a href="/reservations/{{ i['id'] }}"><button>View Reservation</button></a>
+                                
+                                
+                                <form method="post" action="/reservation/delete">
+                                    <input id="event_id" name="event_id" type="text" value="{{ i['id'] }}" style="display:none;">
+                                    <button id="delete">Delete</button>
+                                </form>
+
+                                
                             </div>
                         </div>
 
