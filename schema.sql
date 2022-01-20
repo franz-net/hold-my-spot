@@ -1,3 +1,8 @@
+drop table users cascade;
+drop table events cascade;
+drop table event_admins;
+drop table event_attendees;
+
 CREATE TABLE IF NOT EXISTS users (
 	id serial PRIMARY KEY,
 	name varchar(50),
