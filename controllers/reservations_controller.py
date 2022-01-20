@@ -1,7 +1,7 @@
 from crypt import methods
 from flask import Blueprint, redirect, session, request, render_template
 from models.events import get_event_by_id
-from models.reservations import add_reservation, cancel_reservation, mark_attendance
+from models.reservations import add_reservation, cancel_reservation, get_reservation_details, mark_attendance
 from models.user import add_user, get_user_by_email
 
 reservations_controller = Blueprint("reservations_controller", __name__)
@@ -14,7 +14,10 @@ def delete_reservation():
         reservation_id = request.form.get('reservation_id')
         event_id = request.form.get('event_id')
         cancel_reservation(reservation_id)
-        return redirect('/events/'+str(event_id))
+        if event_id is None:
+            return redirect('/dashboard')
+        else:
+            return redirect('/events/'+str(event_id))
 
 
 @reservations_controller.route('/reservations/attendee/add', methods=["POST"])
@@ -37,11 +40,12 @@ def admin_add_attendee():
                 
         return redirect('/events/'+str(event_id))
 
-@reservations_controller.route('/reservations/<eventid>') ## MISSING CORRESPONDING VIEW!!
-def view_reservation(eventid):
+@reservations_controller.route('/reservations/<confirmation>') ## MISSING CORRESPONDING VIEW!!
+def view_reservation(confirmation):
     if not session.get('user_id'):
         return redirect('/login')
     else:
-        event = get_event_by_id(eventid)
-        reservation_id = str(session.get('user_id')) + '+' + str(eventid)
-        return render_template('reservation.html', event_data = event, reservation = reservation_id)
+        reservation_details = get_reservation_details(confirmation)
+        url = request.url_root + 'reservations/' + str(reservation_details['event_id']) + '?confirmation=' + str(confirmation)
+        print(reservation_details)
+        return render_template('reservation.html', reservation=reservation_details, url = url)

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+    
+    <div class="events-container">
+
+        <div class="item-view">
+
+                <h2>{{ reservation['title'] }}</h2>
+                
+                <span class="item-label url-small">{{ url }}</span>
+                
+                <p>
+                    <span class="item-value">{{ reservation['description'] }}</span>
+                </p>
+            <div class="data-row"> 
+                <p>
+                    <span class='item-label'>Date: </span>
+                    <span class="item-value">{{ reservation['event_date'] }}</span>
+                </p>
+                <p>
+                    <span class='item-label'>Time: </span>
+                    <span class="item-value">{{ reservation['event_time'] }}</span>
+                </p>
+                <p>
+                    <span class='item-label'>Address: </span>
+                    <span class="item-value">{{ reservation['address'] }}</span>
+                </p>
+            </div>
+            <div class="buttons-row">
+                <form method="post" action="/reservations/delete">
+                    <input id="reservation_id" name="reservation_id" type="number" value="{{ reservation['reservation_id'] }}" hidden>
+                    <button id="delete">Cancel Reservation</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

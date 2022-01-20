@@ -28,12 +28,6 @@ def add_event_admin(eventid, userid):
     sql_write(query, params)
     return
 
-#Remove event admin user
-def remove_event_admin(eventid, userid):
-    query = "delete from event_admins where user_id = %s and event_id = %s"
-    params = [userid, eventid]
-    sql_write(query, params)
-    return
 
 #Update single event
 def update_event(eventid, title, description, event_date, event_time, address, capacity, phone, email):
@@ -44,13 +38,13 @@ def update_event(eventid, title, description, event_date, event_time, address, c
 
 #See how many seats are left
 def get_capacity_left(eventid):
-    query = "select count(*) AS reservations from event_attendees where event_id = %s"
+    query = "select count(*) AS reservations from reservations where event_id = %s"
     reserved = sql_select(query,[eventid])[0]
     return reserved['reservations']
 
 #Return list of events by attendee
 def get_events_by_attendee(userid):
-    query = "select e.id, e.title, e.description, e.event_date, e.event_time, e.address, ea.reservation_id from event_attendees ea join events e on ea.event_id = e.id where ea.user_id = %s;"
+    query = "select e.id, e.title, e.description, e.event_date, e.event_time, e.address, ea.reservation_id from reservations ea join events e on ea.event_id = e.id where ea.user_id = %s;"
     events = sql_select(query, [userid])
     for row in events:
         row['event_date'] = row['event_date'].strftime(DATE_FORMAT)
@@ -68,7 +62,7 @@ def get_events_by_admin(userid):
 
 #Return list of attendees by eventid
 def get_attendees_by_event(eventid):
-    query = "select u.id, u.name, u.last_name, u.phone, u.email, ea.reservation_id from event_attendees ea join users u on ea.user_id = u.id where ea.event_id = %s"
+    query = "select u.id, u.name, u.last_name, u.phone, u.email, ea.reservation_id from reservations ea join users u on ea.user_id = u.id where ea.event_id = %s"
     attendee_list = sql_select(query, [eventid])
     return attendee_list
 

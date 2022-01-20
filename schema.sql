@@ -26,10 +26,10 @@ CREATE TABLE IF NOT EXISTS event_admins(
 );
 
 
-CREATE TABLE IF NOT EXISTS event_attendees(
+CREATE TABLE IF NOT EXISTS reservations(
     reservation_id serial,
     user_id int REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
     event_id int REFERENCES events(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    attendamce int DEFAULT 0,
-    CONSTRAINT event_attendees_pkey PRIMARY KEY(user_id, event_id)
+    attendance int DEFAULT 0,
+    CONSTRAINT reservations_pkey PRIMARY KEY(user_id, event_id)
 );
