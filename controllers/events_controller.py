@@ -56,6 +56,7 @@ def view_event(eventid):
         reservations = get_capacity_left(eventid)
         event['capacity'] = f'{event["capacity"] - reservations}/{event["capacity"]}'
         attendee_list = get_attendees_by_event(eventid)
+        print(attendee_list)
         base_url = request.url_root + 'reserve/'
         return render_template('event.html', event_data = event, attendee_data = attendee_list, date_form = date_form, base_url= base_url)
 
@@ -86,12 +87,3 @@ def remove_event():
         eventid = request.form.get('event_id')
         delete_event(eventid)
         return redirect('/dashboard')
-
-@events_controller.route('/reservations/<eventid>') ## MISSING CORRESPONDING VIEW!!
-def view_reservation(eventid):
-    if not session.get('user_id'):
-        return redirect('/login')
-    else:
-        event = get_event_by_id(eventid)
-        reservation_id = str(session.get('user_id')) + '+' + str(eventid)
-        return render_template('reservation.html', event_data = event, reservation = reservation_id)

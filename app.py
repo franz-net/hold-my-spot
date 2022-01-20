@@ -2,6 +2,7 @@ from flask import Flask, render_template, session
 from controllers.user_controller import user_controller
 from controllers.session_controller import session_controller
 from controllers.events_controller import events_controller
+from controllers.reservations_controller import reservations_controller
 import os
 
 
@@ -15,6 +16,7 @@ app.config['SESSION_PERMANENT'] = True
 app.register_blueprint(user_controller)
 app.register_blueprint(session_controller)
 app.register_blueprint(events_controller)
+app.register_blueprint(reservations_controller)
 
 @app.route('/')
 def index():

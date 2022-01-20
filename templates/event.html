@@ -43,15 +43,41 @@
     </div>
 
     <div class="events-container">
-        {% if attendee_data | length > 0 %}
-            {% for attendee in attendee_data %}
-                {{ attendee }}
-            {% endfor %}
-        {% else %}
-            <h3>No one has reserved a spot yet!</h3>
-        {% endif %}
+        <h2> Registered Attendees </h2>
+        <hr>
+        <div class="item-view">
+            {% if attendee_data | length > 0 %}
+                {% for attendee in attendee_data %}
+                    <div class="attendees-row"> 
+                            <img class="row-icon" src="../static/assets/user-icon.svg">
+                            <span class="item-value"><strong>{{ attendee['name'] }}</strong></span>
+                            <span class="item-value">{{ attendee['email'] }}</span>
+                            <form method="post" action="/reservations/delete">
+                                <input id="reservation_id" name="reservation_id" type="number" value="{{ attendee['reservation_id'] }}" hidden>
+                                <input id="event_id" name="event_id" type="number" value="{{ event_data['id'] }}" hidden/>
+                                <button id="delete">Remove Attendee</button>
+                            </form>
+                        
+                    </div>
+                    {% if attendee_data | length > 1 and not loop.last %}
+                        <div class="separator"></div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <h3>No one has reserved a spot yet!</h3>
+            {% endif %}
+        </div>
+        <div class="buttons-row">
+            <form method="post" action="/reservations/attendee/add">
+                <input id="event_id" name="event_id" type="text" value="{{ event_data['id'] }}" hidden/>
+                <label for="name">Name:</label>
+                <input id="name" name="name" type="text" placeholder="John" required/>
+                <label for="email">E-mail:</label>
+                <input id="email" name="email" type="email" placeholder="attendee@email.com" required/>
 
-        <button> Add User</button>
+                <button id="delete">Add Attendee</button>
+            </form>
+        </div>
     </div>
 
 

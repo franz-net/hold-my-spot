@@ -262,6 +262,10 @@ button {
     padding: 1em;
 }
 
+.events-container h2 {
+    margin:0;
+}
+
 .event-list {
     overflow: auto;
     max-height: 50%;
@@ -270,7 +274,10 @@ button {
 .event-item {
     display: flex;
     flex-direction: column;
-    border-bottom: 1px dashed rgb(72, 69, 69);;
+}
+
+.separator {
+    border-bottom: 1px dashed rgb(72, 69, 69);
 }
 
 .title-row {
@@ -319,15 +326,18 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1em;
 }
 
 .item-view h2 {
-    margin-bottom: 0;
+    margin: 0;
 }
 
 .buttons-row{
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 1em;
 }
 
@@ -335,4 +345,19 @@ button {
     font-size: 0.8em;
 }
 
+.attendees-row {
+    /* display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    
+}
+
+.row-icon {
+    width: 20px;
+    height: 20px;
+}
 /* --------------*/

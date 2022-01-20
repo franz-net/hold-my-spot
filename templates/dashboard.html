@@ -23,6 +23,9 @@
                         </div>
 
                     </div>
+                    {% if admin_events | length >1 and not loop.last %}
+                        <div class="separator"></div>
+                    {% endif %}
                 {% endfor %}
             {% else %}
                     <h4>No Events here... Try creating an event!</h4>
@@ -50,6 +53,9 @@
                         </div>
 
                     </div>
+                    {% if attendee_events | length >1 and not loop.last %}
+                        <div class="separator"></div>
+                    {% endif %}
                 {% endfor %}
             {% else %}
                 <h4>No Events here... Try creating an event!</h4>

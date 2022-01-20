@@ -42,29 +42,7 @@ def update_event(eventid, title, description, event_date, event_time, address, c
     sql_write(query, params)
     return
 
-#Register Attendee
-def add_attendee(eventid, userid):
-    query = "insert into event_attendees (user_id, event_id) values (%s, %s)"
-    params = [userid, eventid]
-    sql_write(query, params)
-    return
-
-#Unregister Attendee
-def remove_attendee(eventid, userid):
-    query = "delete from event_attendees where user_id = %s and event_id = %s"
-    params = [userid, eventid]
-    sql_write(query, params)
-    return
-
-#Checkin the attendee
-def mark_attendance(eventid, userid, attendance):
-    query = "update event_attendees set attendance = %s where user_id = %s and event_id = %s"
-    params = [attendance, userid, eventid]
-    sql_write(query, params)
-    return
-
 #See how many seats are left
-
 def get_capacity_left(eventid):
     query = "select count(*) AS reservations from event_attendees where event_id = %s"
     reserved = sql_select(query,[eventid])[0]
@@ -77,8 +55,6 @@ def get_events_by_attendee(userid):
     for row in events:
         row['event_date'] = row['event_date'].strftime(DATE_FORMAT)
         row['event_time'] = row['event_time'].strftime(TIME_FORMAT)
-    
-    print(events)
     return events
 
 #Return list of events by admin
@@ -92,17 +68,11 @@ def get_events_by_admin(userid):
 
 #Return list of attendees by eventid
 def get_attendees_by_event(eventid):
-    query = "select u.id, u.name, u.last_name, u.phone, u.email from event_attendees ea join users u on ea.user_id = u.id where ea.event_id = %s"
+    query = "select u.id, u.name, u.last_name, u.phone, u.email, ea.reservation_id from event_attendees ea join users u on ea.user_id = u.id where ea.event_id = %s"
     attendee_list = sql_select(query, [eventid])
     return attendee_list
 
 def delete_event(eventid):
-    query = "delete from events where id = %s"
+    query = "delete from events where id = %s;"
     sql_write(query, [eventid])
     return
-
-def get_checked_in_attendees(eventid):
-    # TODO
-    query = "select capacity from events where id = %s"
-    capacity = sql_select(query, [eventid])[0]
-    return 
