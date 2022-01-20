@@ -281,13 +281,6 @@ button {
     border-bottom: 1px dashed rgb(72, 69, 69);
 }
 
-.title-row {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 2em;
-}
-
 .details-row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -346,12 +339,13 @@ button {
     font-size: 0.8em;
 }
 
-.attendees-row {
+.data-row {
     /* display: grid;
     grid-template-columns: 0.5fr 1fr 1fr 1fr; */
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
     overflow: auto;
     gap: 1.5em;
     

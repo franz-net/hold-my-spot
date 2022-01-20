@@ -6,13 +6,14 @@
         <div class="item-view">
 
                 <h2>{{ event_data['title'] }}</h2>
-                
-                <span class="item-label url-small">{{ base_url ~ event_data['title'] ~ '/' ~ event_data['id'] }}</span>
-                
                 <p>
-                    <span class="item-value">{{ event_data['description'] }}</span>
+                    <span class="item-value url-small">{{ event_data['description'] }}</span>
                 </p>
-            <div class="data-row"> 
+            <div class="data-column">
+                <p>
+                    <span class='item-label'>User Registration: </span>
+                    <span class="item-value">{{ url }}</span>
+                </p> 
                 <p>
                     <span class='item-label'>Date: </span>
                     <span class="item-value">{{ event_data['event_date'] }}</span>
@@ -25,6 +26,14 @@
                 <p>
                     <span class='item-label'>Capacity: </span>
                     <span class="item-value">{{ event_data['capacity'] }}</span>
+                </p>
+                <p>
+                    <span class='item-label'>Contact Email: </span>
+                    <span class="item-value">{{ event_data['email'] }}</span>
+                </p>
+                <p>
+                    <span class='item-label'>Contact Phone: </span>
+                    <span class="item-value">{{ event_data['phone'] }}</span>
                 </p>
                 <p>
                     <span class='item-label'>Address: </span>
@@ -48,7 +57,7 @@
         <div class="event-list">
             {% if attendee_data | length > 0 %}
                 {% for attendee in attendee_data %}
-                    <div class="attendees-row"> 
+                    <div class="data-row"> 
                             <img class="row-icon" src="../static/assets/user-icon.svg">
                             <span class="item-value"><strong>{{ attendee['name'] }}</strong></span>
                             <span class="item-value">{{ attendee['email'] }}</span>

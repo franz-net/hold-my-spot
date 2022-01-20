@@ -25,7 +25,6 @@ def admin_add_attendee():
     if not session.get('user_id'):
         return redirect('/login')
     else:
-        
         email = request.form.get('email')
 
         user_id = get_user_by_email(email)['id']
@@ -33,11 +32,8 @@ def admin_add_attendee():
             name = request.form.get('name')
             user_id = add_user(email, name, None, None, None)
             
-
         event_id = request.form.get('event_id')
-        
         add_reservation(event_id, user_id)
-                
         return redirect('/events/'+str(event_id))
 
 @reservations_controller.route('/reservations/<confirmation>') ## MISSING CORRESPONDING VIEW!!
@@ -46,6 +42,15 @@ def view_reservation(confirmation):
         return redirect('/login')
     else:
         reservation_details = get_reservation_details(confirmation)
-        url = request.url_root + 'reservations/' + str(reservation_details['event_id']) + '?confirmation=' + str(confirmation)
+        url = request.url_root + 'events/reservations' + '?confirmation=' + str(confirmation)
         print(reservation_details)
         return render_template('reservation.html', reservation=reservation_details, url = url)
+
+@reservations_controller.route('/reserve/add', methods=["GET"])
+def create_reservation_from_url():
+    if not session.get('user_id'):
+        return render_template('event_registration.html')
+    else:
+        email = session.get('email')
+        user_data = get_user_by_email(email)
+        return render_template('event_registration.html', user_data = user_data)

@@ -6,13 +6,14 @@
         <div class="item-view">
 
                 <h2>{{ reservation['title'] }}</h2>
-                
-                <span class="item-label url-small">{{ url }}</span>
-                
                 <p>
-                    <span class="item-value">{{ reservation['description'] }}</span>
+                    <span class="item-value url-small">{{ reservation['description'] }}</span>
                 </p>
-            <div class="data-row"> 
+            <div class="data-column"> 
+                <p>
+                    <span class='item-label'>Check In URL: </span>
+                    <span class="item-value">{{ url }}</span>
+                </p>
                 <p>
                     <span class='item-label'>Date: </span>
                     <span class="item-value">{{ reservation['event_date'] }}</span>
@@ -20,6 +21,14 @@
                 <p>
                     <span class='item-label'>Time: </span>
                     <span class="item-value">{{ reservation['event_time'] }}</span>
+                </p>
+                <p>
+                    <span class='item-label'>Contact Email: </span>
+                    <span class="item-value">{{ reservation['email'] }}</span>
+                </p>
+                <p>
+                    <span class='item-label'>Contact Phone: </span>
+                    <span class="item-value">{{ reservation['phone'] }}</span>
                 </p>
                 <p>
                     <span class='item-label'>Address: </span>

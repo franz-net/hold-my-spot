@@ -41,14 +41,18 @@ for (let tab of $loginSignupTabs) {
     })
 }
 
+if ($updateBtn !== null){
+    $updateBtn.addEventListener('click', () => {
+        $updateModal.classList.remove('hidden')
+    })
+}
 
-$updateBtn.addEventListener('click', () => {
-    $updateModal.classList.remove('hidden')
-})
+if ($cancelUpdBtn !== null){
+    $cancelUpdBtn.addEventListener('click', () => {
+        $updateModal.classList.add('hidden')
+    })
+}
 
-$cancelUpdBtn.addEventListener('click', () => {
-    $updateModal.classList.add('hidden')
-})
-
-$defaultLoginTab.click()
-// Web Requests
+if ($defaultLoginTab !== null) {
+    $defaultLoginTab.click()
+}

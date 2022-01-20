@@ -10,7 +10,7 @@
                 {% for i in admin_events|sort(attribute='event_date') %}
                     <div class="event-item">
 
-                        <div class="title-row">
+                        <div class="data-row">
                             <strong>{{ i['title'] }}</strong>
 
                             <span class='item-label'>Date: </span>
@@ -41,7 +41,7 @@
                 {% for i in attendee_events|sort(attribute='event_date') %}
                     <div class="event-item">
 
-                        <div class="title-row">
+                        <div class="data-row">
                             <strong>{{ i['title'] }}</strong>
                             <span class='item-label'>Confirmation ID: </span> 
                             <span class="item-value">{{ i['reservation_id'] }}</span>
