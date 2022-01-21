@@ -1,4 +1,4 @@
-# [hold-my-spot](https://hold-my-spot.herokuapp.com/) - https://hold-my-spot.herokuapp.com/
+# [hold-my-spot](live site) - https://hold-my-spot.herokuapp.com/
 GA - SEI Project 2: CRUD Reservation system
 ---
 
