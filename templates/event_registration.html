@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+    
+<div id="landing-modal" class="modal-outer">
+    <div class="modal-frame">
+
+
+        <div class="login-tabcontent tabcontent-show  single-form">
+                <h2>Event Registration</h2>
+
+                <h3>{{ event['title'] }}</h3>
+                <p>
+                    <span class="item-value url-small">{{ event['description'] }}</span>
+                </p>
+            <div class="data-column"> 
+                <p>
+                    <span class='item-label'>Date: </span>
+                    <span class="item-value">{{ event['event_date'] }}</span>
+                </p>
+                <p>
+                    <span class='item-label'>Time: </span>
+                    <span class="item-value">{{ event['event_time'] }}</span>
+                </p>
+                <p>
+                    <span class='item-label'>Contact Email: </span>
+                    <span class="item-value">{{ event['email'] }}</span>
+                </p>
+                <p>
+                    <span class='item-label'>Contact Phone: </span>
+                    <span class="item-value">{{ event['phone'] }}</span>
+                </p>
+                <p>
+                    <span class='item-label'>Address: </span>
+                    <span class="item-value">{{ event['address'] }}</span>
+                </p>
+            </div>
+            <div class="buttons-row">
+                <form class="form" method="post" action="/reservations/attendee/add">
+                    {% if user is none %}
+                        <input id="event_id" name="event_id" type="text" value="{{ event['id'] }}" hidden/>
+                        <input id="source" name="source" type="text" value="external" hidden />
+                        <label for="name">Name:</label>
+                        <input id="name" name="name" type="text" placeholder="John" required/>
+                        <label for="email">E-mail:</label>
+                        <input id="email" name="email" type="email" placeholder="attendee@email.com" required/>
+                    {% else %}
+                        <input id="event_id" name="event_id" type="text" value="{{ event['id'] }}" hidden/>
+                        <input id="email" name="email" type="email" placeholder="attendee@email.com" value="{{ user }}" hidden required/>
+                    {% endif %}
+
+                    <button id="delete">Register for event</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <p>&copy; Hold My Spot 2022 - All rights reserved</p>
+    </div>
+</div>
+
+{% endblock %}

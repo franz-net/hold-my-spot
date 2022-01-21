@@ -32,9 +32,9 @@ CREATE TABLE IF NOT EXISTS event_admins(
 
 
 CREATE TABLE IF NOT EXISTS reservations(
-    reservation_id serial,
+    reservation_id serial UNIQUE,
     user_id int REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
     event_id int REFERENCES events(id) ON UPDATE CASCADE ON DELETE CASCADE,
     attendance int DEFAULT 0,
-    CONSTRAINT reservations_pkey PRIMARY KEY(user_id, event_id)
+    CONSTRAINT reservations_pkey PRIMARY KEY(reservation_id, user_id, event_id)
 );

@@ -1,31 +1,30 @@
 # [hold-my-spot](https://hold-my-spot.herokuapp.com/) - https://hold-my-spot.herokuapp.com/
-CRUD Reservation system
+GA - SEI Project 2: CRUD Reservation system
 ---
 
 ### Goal
 **Short term**
-- Create an event reservation system to facilitate event capacity management and access control to events
+- Create an event reservation system to facilitate reservation management, and access control to events
 
 **Long term**
 - Create a SaaS application for event management to handle recurring event scheduling, subscription payments, sms and email notifications
 
 ---
 
-### Milestones:
-- [x] Landing Page
-- [x] Login screen
-- [x] Signup screen
-- [ ] Dashboard showing upcoming Events(For admins, it allows management of the event and adding walk-ins)
-- [ ] Event sign up screen
+### Technical Requirements:
+- [x] At least 2 tables in DB
+- [x] Login screen/Sign up
+- [x] Modify/Add data to the DB
+- [x] Dashboard showing upcoming Events(For admins, it allows management of the event and adding walk-ins
+- [x] Hosted online 
 
 
 ---
 ### SQL Tables needed:
-- Users table: Stores users and passwords along with contact information
-- Events table: Stores the event data
+- users table: Stores users and passwords along with contact information
+- events table: Stores the event data
 - event_admin table: Stores Admins to the events
-- event_attendee table: Stores the attendees of the events
-- leads table: Stores walkin users email address for creating future accounts(stretch)
+- reservations table: Stores the attendees of the events
 
 #### Entity Relationship Diagram:
 ![Entity_relationship](er-diagram.png)
@@ -33,29 +32,64 @@ CRUD Reservation system
 ---
 ### User stories
 
-#### Event planner:
-- Event Planner Joseph, has a new event on March 13 2022 at a specific place
-- Joseph signs up on "hold-my-spot"
-- Joseph creates an event
-- Joseph publishes the event and gets a custom link to the event that can be published or emailed to his audience
+* **Event planner:**
+  * Joseph is hosting a master class for 15 attendees on March 13 2022
+  * Joseph creates an account and logs in, then creates the event providing:
+    * Title
+    * Description
+    * Capacity (seats available)
+    * Date
+    * Time
+    * Address
+    * Email address (for information)
+    * Phone number (for information)
+  * Joseph now can add the users manually to the event, or grab the "registration URL" and post it on his website or send it via email
+  * Joseph can also decide to edit the event to add more seats
+  * On the day of the event, he can review the attendee list to make sure all the seats are reserved and add walk-ins manually
 
-#### Event attendee:
-- Event Attendee Mike, received a link to sign up for the event
-- Mike goes to the link and creates an account
-- Once Mike is logged in, he can register for the event and receive a confirmation email (extension: QR code)
+* **Attendee:**
+  * Mike saw the event information on a website and grabbed the "registration URL"
+  * On the registration URL, he registered as a guest
+  * Once registered he was shown the registration confirmation
+  * On the day of the event, he can click on check-in once he has arrived to the event
 
-#### Event planner on the day of the event:
-- Joseph opens up "hold-my-spot"
-- Joseph can see the names, and emails of the attendees that signed up for the class
-- Joseph can mark someone as absent, which frees up a space on the class
-- Joseph can register users on their behalf in case of walk-ins
+---
 
-#### Event planner after the event:
-- Joseph can download a list of attendees for future contact
-- Joseph can create a new event based on the same characteristics of the previous one
+### Technologies Used
+* Python Flask - For the back end framework and Front end views
+* Postgres - To store persistent data related to the events and users
+* JavaScript - For some of the interactivity in the application
+* Heroku - Web application hosting
 
-#### Attendees after the event: (Stretch)
-- Mike can now create his own events as well
-- Mike can re-use his account for future events managed by "hold-my-spot"
+---
 
-- John (walk-in) receives an email with instructions to create an account in the future if needed
+### Installation Instructions
+
+> Installation instructions assume the basic setup has been satisfied:
+> * Python3
+> * Postgresql
+
+
+**Environment setup**
+- Clone the repository locally
+- Create Python3 Virtual Environment `python3 -m venv env`
+- Activate the environment `source /env/bin/activate`
+- Install the dependencies `pip3 install -r requirements.txt`
+
+**Database setup**
+- Create database hold-my-spot `createdb hold-my-spot`
+- Connect to the database using your favorite DB editor or command line
+- Execute the DDL statements in `schema.sql` to create the required tables
+
+**Starting the application**
+- Execute `flask run`
+
+---
+
+### Roadmap
+There are many features and cosmetic things to fix:
+* Add feedback messages for basic errors
+* Add validation of fields
+* QR codes for validation
+* JavaScript http requests to enhance interactivity
+* many more to come...

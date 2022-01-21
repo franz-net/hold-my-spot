@@ -57,7 +57,7 @@ def view_event(eventid):
         event['capacity'] = f'{event["capacity"] - reservations}/{event["capacity"]}'
         attendee_list = get_attendees_by_event(eventid)
         print(attendee_list)
-        url = request.url_root + 'reserve/add?event=' + str(eventid)
+        url = request.url_root + 'event/register?event=' + str(eventid)
         return render_template('event.html', event_data = event, attendee_data = attendee_list, date_form = date_form, url=url)
 
 @events_controller.route('/events/update', methods=["POST"])
