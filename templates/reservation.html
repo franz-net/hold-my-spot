@@ -36,6 +36,11 @@
                             <p>Show the QR Code below to the host when arriving at the event</p>
                             <img src="{{ qr_code }}">
                         </div>
+                        <div class="message">
+                            {% if reservation['attendance'] == 1 %}
+                            <h4>Already checked in!</h4>
+                            {% endif %}
+                        </div>
                     </div>
                 {% if external == false %}
                     <div class="buttons-row">
