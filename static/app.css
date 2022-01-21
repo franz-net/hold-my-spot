@@ -60,6 +60,14 @@ button:active {
     background-color: #4a38e8;
 }
 
+.link {
+    text-decoration: none;
+    color: #c33764
+}
+.link:hover{
+    background-color: #ddc3cc;
+}
+
 #main-container {
     display: flex;
     flex-direction: column;
