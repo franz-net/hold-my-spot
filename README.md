@@ -89,11 +89,12 @@ GA - SEI Project 2: CRUD Reservation system
 
 ---
 
+### Current Gaps and Issues:
+* Missing feedback after some actions like, check in, or errors with duplicate entries
+* Field validation
+
 ### Roadmap
 There are many features and cosmetic things to fix:
-* Add feedback messages for basic errors
-* Add validation of fields
-* Add validation of duplicate entries
 * JavaScript http requests to enhance interactivity
 * Email notifications using mail gun and flask-mail
 * many more to come...
