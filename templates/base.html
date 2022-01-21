@@ -9,33 +9,34 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <div id="main-container" class="dashboard-container">
-        <header id="header-logged">
-            <div class="user-display">
-                {% if session['user_id'] %}
-                    <p>Logged in as: <strong>{{ session['name'] ~ ' - ' ~ session['email'] }}</strong></p>
-                    <a href="/logout">
-                        <button title="logout" class="btn-red">
-                            <span class="material-icons">
-                                logout
-                            </span>
-                        </button>
-                    </a>
-                {% endif %}
-            </div>
-            <div class="link-bar">
-                <img class="logo-mini" src="../static/assets/logo-small.png">
-                <nav>
-                    <a href="/dashboard"><button>Dashboard</button></a>
-                    <a href="/events/create"><button>Create Event</button></a>
+    <div class="bg-overlay">
+        <div id="main-container" class="dashboard-container">
+            <header id="header-logged">
+                <div class="user-display">
+                    {% if session['user_id'] %}
+                        <p>Logged in as: <strong>{{ session['name'] ~ ' - ' ~ session['email'] }}</strong></p>
+                        <a href="/logout">
+                            <button title="logout" class="btn-red">
+                                <span class="material-icons">
+                                    logout
+                                </span>
+                            </button>
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="link-bar">
+                    <img class="logo-mini" src="../static/assets/logo-small.png">
+                    <nav>
+                        <a href="/dashboard"><button>Dashboard</button></a>
+                        <a href="/events/create"><button>Create Event</button></a>
                     <!-- <a href="/events/past"><button>View Past Events</button></a> -->
-                </nav>
-            </div>
-        </header>
-        {% block content %}
+                    </nav>
+                </div>
+            </header>
+            {% block content %}
     
-        {% endblock %}
-
+            {% endblock %}
+        </div>
     </div>
     <footer>
         <p>&copy; Hold My Spot 2022 - All rights reserved</p>

@@ -20,32 +20,45 @@
             </header>
             <section>
                 <div class="landing-section">
+                    
+                    <p>Create your event or class and we'll handle the attendee registration on your behalf, just share the event registration link with them</p>
+                    
                     <img src="../static/assets/logo.svg" alt="queue"/>
-                    <p>Create your recurring event or class and we'll handle the attendees on your behalf</p>
                 </div>
-        
+            
+                <div class="landing-section">
+                    <img src="../static/assets/qr-code.svg" alt="queue"/>
+                    <p>As attendees register, QR codes are generated to access the event on the day</p>
+                    
+                </div>
+
                 <div class="landing-section">
                     <p>Avoid unnecessary queue lines by letting your attendees know exactly when to show up</p>
                     <img src="../static/assets/queue.svg" alt="queue"/>
                 </div>
             </section>
             <section>
-                <h4>Features</h4>
-                <ul>
-                    <li>Create a custom page for your business</li>
-                    <li>Manage recurrent events and create schedules attendees can reserve a spot on</li>
-                    <li>Attendees can sign up to one or more events based on event capacity and rules</li>
-                    <li>Control access and roll call by checking on QR or reservation ID</li>
-                </ul>
+                <div class="landing-section transparent">
+                    <div>
+                        <h4>Main Features</h4>
+                        <ul>
+                            <li>Create events</li>
+                            <li>Give the invite URL to your target audience</li>
+                            <li>Attendees don't need to be signed up to register</li>
+                            <li>Control access and roll call by checking on QR or reservation ID</li>
+                        </ul>
+                    </div>
+                </div>
             </section>
         
         {% block content %}
         {% endblock %}
         </div>
+    
+        <footer>
+            <p>&copy; Hold My Spot 2022 - All rights reserved</p>
+        </footer>
     </div>
-    <footer>
-        <p>&copy; Hold My Spot 2022 - All rights reserved</p>
-    </footer>
     <script src="../static/app.js">
     </script>
 </body>
