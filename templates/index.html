@@ -9,40 +9,43 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <div id="main-container">
-        <header id="landing-header">
-            <div id="landing-title">
-                <h1>Hold My Spot!</h1>
-                <p id="landing-subtitle">Reservation management made simple</p>
-            </div>
-            <a href="/login"><button id="landing-btn-login">Login or Sign Up</button></a>
-        </header>
-        <section>
-            <div class="landing-section">
-                <img src="../static/assets/logo.svg" alt="queue"/>
-                <p>Create your recurring event or class and we'll handle the attendees on your behalf</p>
-            </div>
+    <div class="bg-overlay">
+        <div id="main-container">    
+            <header id="landing-header">
+                <div id="landing-title">
+                    <h1>Hold My Spot!</h1>
+                    <p id="landing-subtitle">Reservation management made simple</p>
+                </div>
+                <a href="/login"><button id="landing-btn-login">Login or Sign Up</button></a>
+            </header>
+            <section>
+                <div class="landing-section">
+                    <img src="../static/assets/logo.svg" alt="queue"/>
+                    <p>Create your recurring event or class and we'll handle the attendees on your behalf</p>
+                </div>
         
-            <div class="landing-section">
-                <p>Avoid unnecessary queue lines by letting your attendees know exactly when to show up</p>
-                <img src="../static/assets/queue.svg" alt="queue"/>
-            </div>
-        </section>
-        <section>
-            <h4>Features</h4>
-            <ul>
-                <li>Create a custom page for your business</li>
-                <li>Manage recurrent events and create schedules attendees can reserve a spot on</li>
-                <li>Attendees can sign up to one or more events based on event capacity and rules</li>
-                <li>Control access and roll call by checking on QR or reservation ID</li>
-            </ul>
-        </section>
+                <div class="landing-section">
+                    <p>Avoid unnecessary queue lines by letting your attendees know exactly when to show up</p>
+                    <img src="../static/assets/queue.svg" alt="queue"/>
+                </div>
+            </section>
+            <section>
+                <h4>Features</h4>
+                <ul>
+                    <li>Create a custom page for your business</li>
+                    <li>Manage recurrent events and create schedules attendees can reserve a spot on</li>
+                    <li>Attendees can sign up to one or more events based on event capacity and rules</li>
+                    <li>Control access and roll call by checking on QR or reservation ID</li>
+                </ul>
+            </section>
+        
         {% block content %}
         {% endblock %}
-        <footer id="landing-footer">
-            <p>&copy; Hold My Spot 2022 - All rights reserved</p>
-        </footer>
+        </div>
     </div>
+    <footer>
+        <p>&copy; Hold My Spot 2022 - All rights reserved</p>
+    </footer>
     <script src="../static/app.js">
     </script>
 </body>
