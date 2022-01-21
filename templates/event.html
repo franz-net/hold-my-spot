@@ -12,8 +12,8 @@
             <div class="data-column">
                 <div>
                     <p>
-                        <span class='item-label'>User Registration: </span>
-                        <span class="item-value">{{ url }}</span>
+                        <span class='item-label'>User Registration Link: </span>
+                        <a href="{{url}}"><span class="item-value">{{ url }}</span></a>
                     </p> 
                     <p>
                         <span class='item-label'>Date: </span>
@@ -66,7 +66,7 @@
                             <div class="data-cell">
                                 <span class='item-label'>Status: </span>
                                 <span class="item-value">
-                                    <span class="material-icons {% if attendee['attendance'] == 0 %}red600{% else %}green600{% endif %}">
+                                    <span class="material-icons md-24 {% if attendee['attendance'] == 0 %}red600{% else %}green600{% endif %}">
                                         check_circle_outline
                                     </span>
                                 </span>
@@ -86,6 +86,11 @@
                                     </span>
                                 </button>
                             </a>
+                            <a href="/reservations/{{ attendee['reservation_id'] }}{% if attendee['email'] != session.get['email'] %}?external=1{% endif %}">
+                                <button title="View reservation">
+                                    <span class="material-icons md-18">qr_code_2</span>
+                                </button>
+                            </a>
                         
                     </div>
                     {% if attendee_data | length > 1 and not loop.last %}
@@ -99,13 +104,19 @@
         <div class="buttons-row">
             <form method="post" action="/reservations/attendee/add">
                 <input id="event_id" name="event_id" type="text" value="{{ event_data['id'] }}" hidden/>
-                <label for="name">Name:</label>
-                <input id="name" name="name" type="text" placeholder="John" required/>
-                <label for="email">E-mail:</label>
-                <input id="email" name="email" type="email" placeholder="attendee@email.com" required/>
-
-                <button id="delete" title="Register user">
-                    <span class="material-icons md-18">person_add</span></button>
+                <div class="form-row">
+                    <div class="data-cell">
+                        <label for="name">Name:</label>
+                        <input id="name" name="name" type="text" placeholder="John" required/>
+                    </div>
+                    <div class="data-cell">
+                        <label for="email">E-mail:</label>
+                        <input id="email" name="email" type="email" placeholder="attendee@email.com" required/>
+                    </div> 
+                    <button id="delete" title="Register user">
+                        <span class="material-icons md-18">person_add</span>
+                    </button>
+                </div>
             </form>
         </div>
     </div>

@@ -30,8 +30,11 @@
                                 <span class='item-label'>Address: </span>
                                 <span class="item-value">{{ reservation['address'] }}</span>
                             </p>
+                            <hr/>
                         </div>
+                        
                         <div class="qr">
+                            
                             <h3>Check-in</h3>
                             {% if reservation['attendance'] == 1 %}
                                 <div class="message ok">

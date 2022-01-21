@@ -287,8 +287,9 @@ footer, .modal-footer {
 
 .events-container {
     border-radius: 15px;
-    border: 2px solid black;
+    border: 1px solid rgb(143, 141, 141);
     padding: 1em;
+    background-color: rgb(230, 230, 230);
 }
 
 .events-container h2 {
@@ -297,9 +298,11 @@ footer, .modal-footer {
 
 .event-list {
     overflow: auto;
+    /* height: 100px; */
     max-height: 50%;
     margin-bottom: 1em;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -378,7 +381,7 @@ footer, .modal-footer {
     overflow: auto;
     gap: 1.5em;
     min-width: 60%;
-    
+    margin: 5px 0;
 }
 
 .data-column {
@@ -392,6 +395,7 @@ footer, .modal-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 5px;
 }
 
 .data-column p, .data-row p {

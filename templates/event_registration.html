@@ -12,27 +12,31 @@
                 <p>
                     <span class="item-value url-small">{{ event['description'] }}</span>
                 </p>
-            <div class="data-column"> 
-                <p>
-                    <span class='item-label'>Date: </span>
-                    <span class="item-value">{{ event['event_date'] }}</span>
-                </p>
-                <p>
-                    <span class='item-label'>Time: </span>
-                    <span class="item-value">{{ event['event_time'] }}</span>
-                </p>
-                <p>
-                    <span class='item-label'>Contact Email: </span>
-                    <a href="mailto:{{ event['email'] }}"><span class="item-value">{{ event['email'] }}</span></a>
-                </p>
-                <p>
-                    <span class='item-label'>Contact Phone: </span>
-                    <span class="item-value">{{ event['phone'] }}</span>
-                </p>
-                <p>
-                    <span class='item-label'>Address: </span>
-                    <span class="item-value">{{ event['address'] }}</span>
-                </p>
+            <div class="data-column">
+                <div>
+                    <p>
+                        <span class='item-label'>Date: </span>
+                        <span class="item-value">{{ event['event_date'] }}</span>
+                    </p>
+                    <p>
+                        <span class='item-label'>Time: </span>
+                        <span class="item-value">{{ event['event_time'] }}</span>
+                    </p>
+                    <p>
+                        <span class='item-label'>Contact Email: </span>
+                        <a href="mailto:{{ event['email'] }}"><span class="item-value">{{ event['email'] }}</span></a>
+                    </p>
+                    <p>
+                        <span class='item-label'>Contact Phone: </span>
+                        <span class="item-value">{{ event['phone'] }}</span>
+                    </p>
+                    <p>
+                        <span class='item-label'>Address: </span>
+                        <span class="item-value">{{ event['address'] }}</span>
+                    </p>
+                    <hr>
+                </div>
+                
             </div>
             <div class="buttons-row">
                 <form class="form" method="post" action="/reservations/attendee/add">
