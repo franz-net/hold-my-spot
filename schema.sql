@@ -1,7 +1,7 @@
-drop table users cascade;
-drop table events cascade;
-drop table event_admins;
-drop table event_attendees;
+drop table IF EXISTS users cascade;
+drop table IF EXISTS events cascade;
+drop table IF EXISTS event_admins;
+drop table IF EXISTS reservations;
 
 CREATE TABLE IF NOT EXISTS users (
 	id serial PRIMARY KEY,
