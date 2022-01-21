@@ -20,7 +20,7 @@
                             </p>
                             <p>
                                 <span class='item-label'>Contact Email: </span>
-                                <span class="item-value">{{ reservation['email'] }}</span>
+                                <a href="mailto:{{ reservation['email'] }}"><span class="item-value">{{ reservation['email'] }}</span></a>
                             </p>
                             <p>
                                 <span class='item-label'>Contact Phone: </span>
@@ -32,15 +32,20 @@
                             </p>
                         </div>
                         <div class="qr">
-                            <h3>Checkin</h3>
+                            <h3>Check-in</h3>
+                            {% if reservation['attendance'] == 1 %}
+                                <div class="message ok">
+                                    <p>Already checked in!</p>
+                                </div>
+                            {% else %}
+                                <div class="message error">
+                                    <p>Not checked in yet!</p>
+                                </div>
+                            {% endif %}
                             <p>Show the QR Code below to the host when arriving at the event</p>
                             <img src="{{ qr_code }}">
                         </div>
-                        <div class="message">
-                            {% if reservation['attendance'] == 1 %}
-                            <h4>Already checked in!</h4>
-                            {% endif %}
-                        </div>
+                        
                     </div>
                 {% if external == false %}
                     <div class="buttons-row">

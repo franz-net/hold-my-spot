@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hold My Spot!</title>
     <link rel="stylesheet" href="../static/app.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div id="main-container" class="dashboard-container">
@@ -13,7 +14,13 @@
             <div class="user-display">
                 {% if session['user_id'] %}
                     <p>Logged in as: <strong>{{ session['name'] ~ ' - ' ~ session['email'] }}</strong></p>
-                    <a href="/logout"><button>Logout</button></a>
+                    <a href="/logout">
+                        <button title="logout" class="btn-red">
+                            <span class="material-icons">
+                                logout
+                            </span>
+                        </button>
+                    </a>
                 {% endif %}
             </div>
             <div class="link-bar">

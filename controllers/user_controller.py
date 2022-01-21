@@ -12,8 +12,12 @@ def register_user():
     email = request.form.get('email')
     password = bcrypt.hashpw(request.form.get('password').encode(), bcrypt.gensalt()).decode()
     
-    add_user(email, name, lname, phone, password)
-    return redirect('/')
+    user_data = get_user_by_email(email)
+    if user_data:
+        return redirect('/login?error=User+already+exists')
+    else:
+        add_user(email, name, lname, phone, password)
+        return redirect('/login?message=User+Created')
 
 @user_controller.route('/validate_email', methods=["POST"])
 def check_email_in_use():

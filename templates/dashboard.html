@@ -12,14 +12,19 @@
 
                         <div class="data-row">
                             <strong>{{ i['title'] }}</strong>
-
-                            <span class='item-label'>Date: </span>
-                            <span class="item-value">{{ i['event_date'] }}</span>
-
-                            <span class='item-label'>Time: </span>
-                            <span class="item-value">{{ i['event_time'] }}</span>
-                            
-                            <a href="/events/{{ i['id'] }}"><button>Manage Event</button></a>
+                            <p>
+                                <span class='item-label'>Date: </span>
+                                <span class="item-value">{{ i['event_date'] }}</span>
+                            </p>
+                            <p>
+                                <span class='item-label'>Time: </span>
+                                <span class="item-value">{{ i['event_time'] }}</span>
+                            </p>
+                            <a href="/events/{{ i['id'] }}">
+                                <button title="Manage event">
+                                    <span class="material-icons md-18">edit_calendar</span>    
+                                </button>
+                            </a>
                         </div>
 
                     </div>
@@ -43,13 +48,25 @@
 
                         <div class="data-row">
                             <strong>{{ i['title'] }}</strong>
-                            <span class='item-label'>Confirmation ID: </span> 
-                            <span class="item-value">{{ i['reservation_id'] }}</span>
-                            <span class='item-label'>Date: </span>
-                            <span class="item-value">{{ i['event_date'] }}</span>
-                            <span class='item-label'>Time: </span>
-                            <span class="item-value">{{ i['event_time'] }}</span>
-                            <a href="/reservations/{{ i['reservation_id'] }}"><button>View Reservation</button></a>
+                            <p>
+                                <span class='item-label'>Confirmation: </span> 
+                                <span class="item-value">{{ i['reservation_id'] }}</span>
+                            </p>
+                            <p>
+                                <span class='item-label'>Date: </span>
+                                <span class="item-value">{{ i['event_date'] }}</span>
+                            </p>
+                            <p>
+                                <span class='item-label'>Time: </span>
+                                <span class="item-value">{{ i['event_time'] }}</span>
+                            </p>
+                            <a href="/reservations/{{ i['reservation_id'] }}">
+                                <button title="View reservation">
+                                    <span class="material-icons md-18">
+                                        qr_code_2
+                                    </span>
+                                </button>
+                            </a>
                         </div>
 
                     </div>

@@ -7,9 +7,10 @@ session_controller = Blueprint("session_controller", __name__)
 @session_controller.route('/login')
 def login():
     if not session.get('user_id'):
-        return render_template('login.html')
+        error=request.args.get('error')
+        message=request.args.get('message')
+        return render_template('login.html', error=error, message=message)
     else:
-        ## TODO - CHECK user_id exists in the DB (specially cross environments)
         return redirect('/dashboard')
 
 
@@ -25,7 +26,7 @@ def authenticate_user():
         session['email'] = user['email']
         return redirect('/dashboard')
     else:
-        return redirect('/login')
+        return redirect('/login?error=Invalid+Credentials')
 
 @session_controller.route('/logout')
 def deauthenticate_user():

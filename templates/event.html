@@ -10,41 +10,43 @@
                     <span class="item-value url-small">{{ event_data['description'] }}</span>
                 </p>
             <div class="data-column">
-                <p>
-                    <span class='item-label'>User Registration: </span>
-                    <span class="item-value">{{ url }}</span>
-                </p> 
-                <p>
-                    <span class='item-label'>Date: </span>
-                    <span class="item-value">{{ event_data['event_date'] }}</span>
-                </p>
-                <p>
-                    <span class='item-label'>Time: </span>
-                    <span class="item-value">{{ event_data['event_time'] }}</span>
-                </p>
+                <div>
+                    <p>
+                        <span class='item-label'>User Registration: </span>
+                        <span class="item-value">{{ url }}</span>
+                    </p> 
+                    <p>
+                        <span class='item-label'>Date: </span>
+                        <span class="item-value">{{ event_data['event_date'] }}</span>
+                    </p>
+                    <p>
+                        <span class='item-label'>Time: </span>
+                        <span class="item-value">{{ event_data['event_time'] }}</span>
+                    </p>
                 
-                <p>
-                    <span class='item-label'>Capacity: </span>
-                    <span class="item-value">{{ event_data['capacity'] }}</span>
-                </p>
-                <p>
-                    <span class='item-label'>Contact Email: </span>
-                    <span class="item-value">{{ event_data['email'] }}</span>
-                </p>
-                <p>
-                    <span class='item-label'>Contact Phone: </span>
-                    <span class="item-value">{{ event_data['phone'] }}</span>
-                </p>
-                <p>
-                    <span class='item-label'>Address: </span>
-                    <span class="item-value">{{ event_data['address'] }}</span>
-                </p>
+                    <p>
+                        <span class='item-label'>Capacity: </span>
+                        <span class="item-value">{{ event_data['capacity'] }}</span>
+                    </p>
+                    <p>
+                        <span class='item-label'>Contact Email: </span>
+                        <a href="mailto:{{ event_data['email'] }}"><span class="item-value">{{ event_data['email'] }}</span></a>
+                    </p>
+                    <p>
+                        <span class='item-label'>Contact Phone: </span>
+                        <span class="item-value">{{ event_data['phone'] }}</span>
+                    </p>
+                    <p>
+                        <span class='item-label'>Address: </span>
+                        <span class="item-value">{{ event_data['address'] }}</span>
+                    </p>
+                </div>
             </div>
             <div class="buttons-row">
-                <button id="edit-event">Edit</button>
+                <a ><button id="edit-event" title="Edit event details">Edit Event</button></a>
                 <form method="post" action="/events/delete">
-                    <input id="event_id" name="event_id" type="text" value="{{ event_data['id'] }}" style="display:none;">
-                    <button id="delete">Delete</button>
+                    <input id="event_id" name="event_id" type="text" value="{{ event_data['id'] }}" hidden>
+                    <button id="delete" title="Cancel event">Cancel Event</button>
                 </form>
             </div>
 
@@ -58,16 +60,32 @@
             {% if attendee_data | length > 0 %}
                 {% for attendee in attendee_data %}
                     <div class="data-row"> 
-                            <img class="row-icon" src="../static/assets/user-icon.svg">
+                            <span class="material-icons md-dark md-inactive">face</span>
                             <span class="item-value"><strong>{{ attendee['name'] }}</strong></span>
                             <span class="item-value">{{ attendee['email'] }}</span>
-                            <span class="item-value">{% if attendee['attendance'] == 1 %}Checked-In{% else %}Not checked In{% endif %}</span>
+                            <div class="data-cell">
+                                <span class='item-label'>Status: </span>
+                                <span class="item-value">
+                                    <span class="material-icons {% if attendee['attendance'] == 0 %}red600{% else %}green600{% endif %}">
+                                        check_circle_outline
+                                    </span>
+                                </span>
+                            </div>
                             <form method="post" action="/reservations/delete">
                                 <input id="reservation_id" name="reservation_id" type="number" value="{{ attendee['reservation_id'] }}" hidden>
                                 <input id="event_id" name="event_id" type="number" value="{{ event_data['id'] }}" hidden/>
-                                <button id="delete">Remove</button>
+                                <a>
+                                    <button id="delete" title="Cancel Reservation">
+                                        <span class="material-icons md-18">delete</span>
+                                    </button>
                             </form>
-                            <a href="/events/checkin?confirmation={{ attendee['reservation_id'] }}&event={{ event_data['id'] }}"><button>Check-in</button></a>
+                            <a href="/events/checkin?confirmation={{ attendee['reservation_id'] }}&event={{ event_data['id'] }}">
+                                <button title="Check-in">
+                                    <span class="material-icons md-18">
+                                        add_task
+                                    </span>
+                                </button>
+                            </a>
                         
                     </div>
                     {% if attendee_data | length > 1 and not loop.last %}
@@ -86,7 +104,8 @@
                 <label for="email">E-mail:</label>
                 <input id="email" name="email" type="email" placeholder="attendee@email.com" required/>
 
-                <button id="delete">Add Attendee</button>
+                <button id="delete" title="Register user">
+                    <span class="material-icons md-18">person_add</span></button>
             </form>
         </div>
     </div>
@@ -143,7 +162,7 @@
 
                     <div class="form-row">
                         <button type="submit">Save Changes</button>
-                        <button id="cancel-update" type="button">Cancel</button>
+                        <button id="cancel-update" type="button" title="Cancel">Cancel</button>
                     </div>
                 </form>
             </div>

@@ -11,7 +11,18 @@
 
         <div id="login-details" class="login-tabcontent tabcontent-hide">
             <h1>Login</h1>
-            <p>Welcome back!, please sign in to continue</p>
+
+            {% if error is not none %}
+                <div class="message error">
+                    <p>{{ error }}</p>
+                </div>
+            {% elif message is not none %}
+                <div class="message ok">
+                    <p>{{ message }}</p>
+                </div>
+            {% endif %}
+            
+            <p>Please sign in to continue</p>
             <form class="form" method="post" action="/auth">
                 <div class="form-row">
                     <label for="email">E-Mail:</label>
@@ -23,8 +34,8 @@
                     <input id="password" name="password" type="password" placeholder="******" autocomplete="current-password" required/>
                 </div>
 
-                <div class="form-row">
-                    <button type="submit">Log In</button>
+                <div class="buttons-row">
+                    <a><button type="submit">Log In</button></a>
                     <a href="/"><button class="login-modal-cancel" type="button">Cancel</button></a>
                 </div>
             </form>
@@ -60,8 +71,8 @@
                     <input id="password" name="password" type="password" placeholder="******" autocomplete="new-password" required/>
                 </div>
 
-                <div class="form-row">
-                    <button type="submit">Sign Up</button>
+                <div class="buttons-row">
+                    <a><button type="submit">Sign Up</button></a>
                     <a href="/"><button class="login-modal-cancel" type="button">Cancel</button></a>
                 </div>
             </form>

@@ -1,4 +1,4 @@
-# [hold-my-spot](live site) - https://hold-my-spot.herokuapp.com/
+# hold-my-spot - [live site](https://hold-my-spot.herokuapp.com/)
 GA - SEI Project 2: CRUD Reservation system
 ---
 
@@ -92,9 +92,12 @@ GA - SEI Project 2: CRUD Reservation system
 ### Current Gaps and Issues:
 * Missing feedback after some actions like, check in, or errors with duplicate entries
 * Field validation
+* Allow anonymous users to finish registering
+* Stop registrations when capacity has been reached
 
 ### Roadmap
 There are many features and cosmetic things to fix:
+* Create a nice unique logo
 * JavaScript http requests to enhance interactivity
 * Email notifications using mail gun and flask-mail
 * many more to come...
