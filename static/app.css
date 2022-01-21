@@ -142,7 +142,7 @@ footer, .modal-footer {
     flex-wrap: wrap;
     border-radius: 20px;
     color: black;
-    min-width: 30%;
+    min-width: 40%;
     max-width: 80%;
     min-height: 300px;
     padding: 0.5em;
