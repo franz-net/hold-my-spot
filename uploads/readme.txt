@@ -1,0 +1,1 @@
+TEMP location to store QR codes before uploading to S3

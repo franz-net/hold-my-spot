@@ -3,3 +3,6 @@ flask
 psycopg2
 bcrypt
 flask-mail
+pillow
+qrcode
+boto3

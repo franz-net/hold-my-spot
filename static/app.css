@@ -351,8 +351,31 @@ button {
     
 }
 
+.data-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items:center;
+}
+.data-column p {
+    margin: 0;
+}
+
 .row-icon {
     width: 20px;
     height: 20px;
+}
+
+.qr {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.qr img {
+    max-width: 15em;
+    max-height: 15em;
+    opacity: 0.75;
 }
 /* --------------*/

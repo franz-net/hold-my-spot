@@ -57,6 +57,9 @@ GA - SEI Project 2: CRUD Reservation system
 
 ### Technologies Used
 * Python Flask - For the back end framework and Front end views
+* Python psycopg2 - To interact with postgress
+* Python qrcode - To generate QR codes
+* Python Boto3 - To interact with S3 buckets
 * Postgres - To store persistent data related to the events and users
 * JavaScript - For some of the interactivity in the application
 * Heroku - Web application hosting
@@ -90,6 +93,7 @@ GA - SEI Project 2: CRUD Reservation system
 There are many features and cosmetic things to fix:
 * Add feedback messages for basic errors
 * Add validation of fields
-* QR codes for validation
+* Add validation of duplicate entries
 * JavaScript http requests to enhance interactivity
+* Email notifications using mail gun and flask-mail
 * many more to come...

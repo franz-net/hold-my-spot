@@ -24,7 +24,7 @@ def mark_attendance(reservationid, attendance):
 
 #Reservation details
 def get_reservation_details(reservationid):
-    query = "select u.name, u.email, e.title, e.description, e.event_date, e.event_time, e.address, e.email, e.phone, ea.attendance, ea.reservation_id, ea.event_id from reservations ea join events e on ea.event_id = e.id join users u on ea.user_id = u.id where ea.reservation_id = %s"
+    query = "select u.name, u.email, e.title, e.description, e.event_date, e.event_time, e.address, e.email, e.phone, ea.attendance, ea.reservation_id, ea.event_id, ea.qr_key, ea.checkin_url from reservations ea join events e on ea.event_id = e.id join users u on ea.user_id = u.id where ea.reservation_id = %s"
     reservation = sql_select(query,[reservationid])
     if len(reservation) > 0:
         reservation[0]['event_date'] = reservation[0]['event_date'].strftime(DATE_FORMAT)
@@ -32,3 +32,16 @@ def get_reservation_details(reservationid):
         return reservation[0]
     else:
         return None
+
+#Add QR_key to db
+def add_qr_key(qr_key, reservationid):
+    query = "update reservations set qr_key = %s where reservation_id = %s;"
+    params= [qr_key, reservationid]
+    sql_write(query, params)
+    return
+
+def add_checkin_url(url, reservationid):
+    query = "update reservations set checkin_url = %s where reservation_id = %s;"
+    params= [url, reservationid]
+    sql_write(query, params)
+    return

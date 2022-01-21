@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-
+    {% if external == true %}
         <div id="landing-modal" class="modal-outer">
             <div class="modal-frame">
                 <div class="login-tabcontent tabcontent-show  single-form">
+    {% else %}
+        <div class="events-container">
+
+            <div class="item-view">
+    {% endif %}
                     <h2>{{ reservation['title'] }}</h2>
                     <p>
                         <span class="item-value url-small">{{ reservation['description'] }}</span>
@@ -39,7 +44,6 @@
                     </div>
                 {% if external == false %}
                     <div class="buttons-row">
-                        <a href='/dashboard'><button>Back</button></a>
                         <form method="post" action="/reservations/delete">
                             <input id="reservation_id" name="reservation_id" type="number" value="{{ reservation['reservation_id'] }}" hidden>
                             <button id="delete">Cancel Reservation</button>
@@ -47,11 +51,12 @@
                     </div>
                 {% endif %}
             </div>
-
+        {% if external == true %}
         </div>
         <div class="modal-footer">
             <p>&copy; Hold My Spot 2022 - All rights reserved</p>
         </div>
-    </div>
+        {% endif %}
+        </div>
 
 {% endblock %}
