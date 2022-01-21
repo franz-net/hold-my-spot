@@ -84,12 +84,15 @@ def create_reservation_from_url():
 
 @reservations_controller.route('/events/checkin', methods=["GET"])
 def reservation_checkin():
+    
     reservation_id = int(request.args.get('confirmation'))
     print("---------" + str(reservation_id))
     mark_attendance(reservation_id, 1)
     if not session.get('user_id'):
-        return redirect('/reservations/'+str(reservation_id))
-    else:
         return redirect('/reservations/'+str(reservation_id)+'?external=1')
+    elif request.args.get('event') is not None :
+        return redirect('/events/'+request.args.get('event'))
+    else:
+        return redirect('/reservations/'+str(reservation_id))
 
     

@@ -12,7 +12,7 @@
         <header id="header-logged">
             <div class="user-display">
                 {% if session['user_id'] %}
-                    <p>Logged in as: <strong>{{ session['email'] }}</strong></p>
+                    <p>Logged in as: <strong>{{ session['name'] ~ ' - ' ~ session['email'] }}</strong></p>
                     <a href="/logout"><button>Logout</button></a>
                 {% endif %}
             </div>

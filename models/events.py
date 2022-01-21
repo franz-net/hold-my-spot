@@ -62,7 +62,7 @@ def get_events_by_admin(userid):
 
 #Return list of attendees by eventid
 def get_attendees_by_event(eventid):
-    query = "select u.id, u.name, u.last_name, u.phone, u.email, ea.reservation_id from reservations ea join users u on ea.user_id = u.id where ea.event_id = %s"
+    query = "select u.id, u.name, u.last_name, u.phone, u.email, ea.reservation_id, ea.attendance from reservations ea join users u on ea.user_id = u.id where ea.event_id = %s"
     attendee_list = sql_select(query, [eventid])
     return attendee_list
 
