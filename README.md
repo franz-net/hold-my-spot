@@ -63,6 +63,7 @@ GA - SEI Project 2: CRUD Reservation system
 * Postgres - To store persistent data related to the events and users
 * JavaScript - For some of the interactivity in the application
 * Heroku - Web application hosting
+* [Haikei](https://app.haikei.app/) - SVG background generator
 
 ---
 

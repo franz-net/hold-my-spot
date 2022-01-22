@@ -17,11 +17,11 @@ body{
     color: #FFF;
     font-family: 'Poppins', sans-serif;
     /* Here is the problem!!! */
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
     align-items:center;
-}
+ */}
 
 .bg-overlay{
     /* position: fixed; */
