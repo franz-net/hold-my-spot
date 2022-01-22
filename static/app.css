@@ -152,6 +152,14 @@ footer, .modal-footer {
     max-width: 200px;
 }
 
+@media screen and (max-width: 400px) {
+
+    .landing-section p{
+        width: 90%;
+        text-align: start;
+    }
+}
+
 /* --------------*/
 
 /* ------ Modal Styling --------*/
