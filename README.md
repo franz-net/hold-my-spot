@@ -95,6 +95,7 @@ GA - SEI Project 2: CRUD Reservation system
 * Field validation
 * Allow anonymous users to finish registering
 * Stop registrations when capacity has been reached
+* Some of the pages act should be modals instead, such as the login page, so have the modal css
 
 ### Roadmap
 There are many features and cosmetic things to fix:
